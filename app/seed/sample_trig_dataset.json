@@ -1,0 +1,33 @@
+{
+  "topics": [
+    {
+      "title": "Intro to Trigonometry",
+      "description": "Basic trig ratios: sine, cosine, tangent",
+      "lessons": [
+        {"title": "Sine, Cosine, Tangent", "content": "<p>SOHCAHTOA basics...</p>"}
+      ],
+      "quiz": {
+        "title": "Trig Basics Quiz",
+        "questions": [
+          {"text": "What is sin(90°)?",
+           "options":[{"text":"0","is_correct":false},{"text":"1","is_correct":true}]
+          }
+        ]
+      }
+    }
+  ],
+  "pre_quiz": {
+    "title": "Pre-Test",
+    "questions": [
+      {"text": "sin(0°) = ?",
+       "options":[{"text":"0","is_correct":true},{"text":"1","is_correct":false}]}
+    ]
+  },
+  "post_quiz": {
+    "title": "Post-Test",
+    "questions": [
+      {"text": "cos(0°) = ?",
+       "options":[{"text":"0","is_correct":false},{"text":"1","is_correct":true}]}
+    ]
+  }
+}

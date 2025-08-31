@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Dashboard</h1>
+{% if pre_quiz %}<a href="{{ url_for('core.start_quiz', id=pre_quiz.id) }}" class="btn btn-warning">Take Pre-Test</a>{% endif %}
+<ul>
+{% for t in topics %}
+  <li><a href="{{ url_for('core.topic_detail', id=t.id) }}">{{ t.title }}</a></li>
+{% endfor %}
+</ul>
+{% if post_quiz %}<a href="{{ url_for('core.start_quiz', id=post_quiz.id) }}" class="btn btn-success">Take Post-Test</a>{% endif %}
+{% endblock %}
