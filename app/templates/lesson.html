@@ -1,5 +1,124 @@
-{% extends 'base.html' %}
+<!-- app/templates/lesson.html -->
+{% extends "base.html" %}
 {% block content %}
-<h2>{{ lesson.title }}</h2>
-<div>{{ lesson.content|safe }}</div>
+<div class="container">
+    <h1 id="lesson-title">Loading lesson...</h1>
+    
+    <div id="lesson-content"></div>
+
+    <h3>Practice Quiz</h3>
+    <form id="quiz-form"></form>
+    <div id="quiz-result" style="margin-top: 1rem;"></div>
+
+    <!-- 🔹 Ask AI Tutor Section -->
+    <div class="ask-ai-tutor" style="margin-top: 2rem;">
+        <h3>Ask AI Tutor 🤖</h3>
+        <form id="ask-ai-form" enctype="multipart/form-data">
+            <textarea name="question" placeholder="Type your question here..." rows="3" class="form-control"></textarea>
+            <br>
+            <input type="file" name="image" accept="image/*" class="form-control">
+            <br>
+            <button type="submit" class="btn btn-primary">Ask</button>
+        </form>
+        <div id="ai-answer" style="margin-top: 1rem;"></div>
+    </div>
+
+    <div class="ai-actions" style="margin-top: 2rem;">
+        <button id="btn-reteach" class="btn btn-warning">Reteach Weak Parts</button>
+        <button id="btn-more" class="btn btn-info">More Practice</button>
+    </div>
+</div>
+
+<script>
+const topicSlug = "{{ topic_slug }}";  // Flask passes topic_slug to template
+const userId = "{{ current_user.id if current_user.is_authenticated else '' }}";
+
+async function loadLesson() {
+    const resp = await fetch(`/api/lesson/${topicSlug}?user_id=${userId}`);
+    const data = await resp.json();
+    if (!data.ok) {
+        document.getElementById("lesson-title").innerText = "Lesson not found.";
+        return;
+    }
+
+    const lesson = data.lesson;
+    document.getElementById("lesson-title").innerText = lesson.title;
+    document.getElementById("lesson-content").innerHTML = lesson.html;
+
+    attachQuizListener();
+}
+
+function attachQuizListener() {
+    const quizForm = document.getElementById("ai-quiz-form");
+    if (!quizForm) return;
+
+    const submitBtn = document.getElementById("ai-submit-quiz");
+    submitBtn.addEventListener("click", async () => {
+        const answers = {};
+        quizForm.querySelectorAll("fieldset").forEach((fs, idx) => {
+            const selected = fs.querySelector("input[type='radio']:checked");
+            if (selected) answers[idx] = selected.value;
+        });
+
+        const resp = await fetch(`/api/lesson/${topicSlug}/submit_quiz`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({user_id: userId, answers: answers})
+        });
+        const result = await resp.json();
+        if (result.ok) {
+            document.getElementById("quiz-result").innerHTML = `
+                <p>Score: ${result.score} / ${result.total}</p>
+                <p>Percentage: ${result.percent}%</p>
+                <p>Recommendation: ${result.recommendation}</p>
+            `;
+        } else {
+            alert(result.error || "Error submitting quiz.");
+        }
+    });
+}
+
+// 🔹 Handle Ask AI Tutor form
+document.getElementById("ask-ai-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    formData.append("topic_slug", topicSlug);
+    formData.append("user_id", userId);
+
+    const resp = await fetch(`/lesson/${topicSlug}/ask_ai_tutor`, {
+        method: "POST",
+        body: formData
+    });
+
+    const html = await resp.text(); 
+    document.getElementById("ai-answer").innerHTML = html;
+});
+
+// Reteach weak parts
+document.getElementById("btn-reteach").addEventListener("click", async () => {
+    const resp = await fetch(`/api/lesson/${topicSlug}/reteach?user_id=${userId}`);
+    const data = await resp.json();
+    if (!data.ok) {
+        alert(data.error || "Error reteaching.");
+        return;
+    }
+    document.getElementById("lesson-content").innerHTML = data.lesson.html;
+    attachQuizListener();
+});
+
+// More practice (for demo, same as reteach)
+document.getElementById("btn-more").addEventListener("click", async () => {
+    const resp = await fetch(`/api/lesson/${topicSlug}/reteach?user_id=${userId}`);
+    const data = await resp.json();
+    if (!data.ok) {
+        alert(data.error || "Error loading more practice.");
+        return;
+    }
+    document.getElementById("lesson-content").innerHTML = data.lesson.html;
+    attachQuizListener();
+});
+
+// Initial load
+loadLesson();
+</script>
 {% endblock %}

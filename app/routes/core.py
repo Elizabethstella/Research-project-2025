@@ -1,54 +1,78 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
-from ..models import db, Topic, Lesson, Quiz, Question, AnswerOption, QuizAttempt, AttemptAnswer
+from app.models import Lesson, QuizQuestion, TestResult, User
+from app import db
+import json, random
 
-bp = Blueprint("core", __name__)
+core = Blueprint("core", __name__)
 
-@bp.route("/")
+@core.route("/")
+def home():
+    return redirect(url_for("core.dashboard"))
+
+@core.route("/dashboard")
 @login_required
 def dashboard():
-    topics = Topic.query.all()
-    pre_quiz = Quiz.query.filter_by(is_pretest=True).first()
-    post_quiz = Quiz.query.filter_by(is_posttest=True).first()
-    return render_template("dashboard.html", topics=topics, pre_quiz=pre_quiz, post_quiz=post_quiz)
+    lessons = Lesson.query.all()
+    pre = TestResult.query.filter_by(user_id=current_user.id, kind="pre").first()
+    post = TestResult.query.filter_by(user_id=current_user.id, kind="post").first()
+    is_admin = current_user.role == "admin"
+    stats = {}
+    if is_admin:
+        total_users = User.query.count()
+        total_admins = User.query.filter_by(role="admin").count()
+        stats = {"total_users": total_users, "total_admins": total_admins}
+    return render_template("dashboard.html", lessons=lessons, pre=pre, post=post, is_admin=is_admin, stats=stats)
 
-@bp.route("/topics/<int:id>")
+@core.route("/lesson/<slug>")
 @login_required
-def topic_detail(id):
-    topic = Topic.query.get_or_404(id)
-    lessons = Lesson.query.filter_by(topic_id=id).all()
-    quiz = Quiz.query.filter_by(topic_id=id).first()
-    return render_template("topic_detail.html", topic=topic, lessons=lessons, quiz=quiz)
-
-@bp.route("/lessons/<int:id>")
-@login_required
-def lesson(id):
-    lesson = Lesson.query.get_or_404(id)
+def lesson(slug):
+    lesson = Lesson.query.filter_by(slug=slug).first_or_404()
     return render_template("lesson.html", lesson=lesson)
 
-@bp.route("/quiz/<int:id>/start")
+def _serve_quiz(kind):
+    questions = QuizQuestion.query.filter_by(kind=kind).all()
+    random.shuffle(questions)
+    return render_template("quiz_take.html", kind=kind, questions=questions)
+@core.route("/dynamic_lesson/<slug>")
 @login_required
-def start_quiz(id):
-    quiz = Quiz.query.get_or_404(id)
-    return render_template("quiz_take.html", quiz=quiz)
+def dynamic_lesson(slug):
+    # call backend to generate lesson (server side) and render template
+    from app.tutor_ai import synthesize_lesson
+    pkg = synthesize_lesson(slug, user_id=current_user.id)
+    if not pkg:
+        flash("Topic not found.", "danger")
+        return redirect(url_for('core.dashboard'))
+    return render_template("dynamic_lesson.html", title=pkg['title'], html=pkg['html'], slug=slug)
 
-@bp.route("/quiz/<int:id>/submit", methods=["POST"])
+@core.route("/pretest", methods=["GET", "POST"])
 @login_required
-def submit_quiz(id):
-    quiz = Quiz.query.get_or_404(id)
-    score = 0
-    attempt = QuizAttempt(quiz_id=quiz.id, user_id=current_user.id, score=0)
-    db.session.add(attempt)
-    db.session.flush()
-
-    for q in Question.query.filter_by(quiz_id=quiz.id).all():
-        ans = request.form.get(str(q.id))
-        if ans:
-            option = AnswerOption.query.get(int(ans))
-            attempt_answer = AttemptAnswer(attempt_id=attempt.id, question_id=q.id, option_id=option.id)
-            db.session.add(attempt_answer)
-            if option.is_correct:
+def pretest():
+    if request.method == "POST":
+        score = 0
+        for qid, ans in request.form.items():
+            if not qid.startswith("q_"): continue
+            q = QuizQuestion.query.get(int(qid.split("_")[1]))
+            if str(ans).strip() == str(q.answer).strip():
                 score += 1
-    attempt.score = score
-    db.session.commit()
-    return render_template("quiz_result.html", quiz=quiz, attempt=attempt)
+        db.session.add(TestResult(user_id=current_user.id, kind="pre", score=score))
+        db.session.commit()
+        flash(f"Pre-test submitted. Score: {score}", "success")
+        return redirect(url_for("core.dashboard"))
+    return _serve_quiz("pre")
+
+@core.route("/posttest", methods=["GET", "POST"])
+@login_required
+def posttest():
+    if request.method == "POST":
+        score = 0
+        for qid, ans in request.form.items():
+            if not qid.startswith("q_"): continue
+            q = QuizQuestion.query.get(int(qid.split("_")[1]))
+            if str(ans).strip() == str(q.answer).strip():
+                score += 1
+        db.session.add(TestResult(user_id=current_user.id, kind="post", score=score))
+        db.session.commit()
+        flash(f"Post-test submitted. Score: {score}", "success")
+        return redirect(url_for("core.dashboard"))
+    return _serve_quiz("post")
