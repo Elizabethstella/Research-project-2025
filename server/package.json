@@ -1,0 +1,39 @@
+{
+  "name": "as-trig-tutor-server",
+  "version": "1.0.0",
+  "description": "Backend server for AS TrigTutor - Node.js + Express + SQLite + Python integration",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.1",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.2",
+    "python-shell": "^5.0.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sqlite",
+    "python",
+    "trigonometry",
+    "ai",
+    "tutor"
+  ],
+  "author": "Elizabeth Tchikenge",
+  "license": "ISC"
+}
