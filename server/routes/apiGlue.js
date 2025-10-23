@@ -33,22 +33,24 @@ router.post("/solve", auth, async (req, res) => {
     // Record analytics
     recordAttempt(req.user.id, topic, result.confidence > 0.7, result.confidence || 0, q);
     
-    // Return structured response for frontend
+    // Return simplified response for frontend - ONLY final_answer and solution_steps
     res.json({
       success: true,
-      solution: result.solution || [],
-      confidence: result.confidence || 0,
-      method: result.method || "",
-      source: result.source || "",
-      matched_question: result.matched_question || "",
-      category: result.category || "",
+      final_answer: result.final_answer || "No solution available",
+      solution_steps: result.solution_steps || [],
       has_graph: result.has_graph || false,
       graph_image: result.graph_image || null
+      // Removed: confidence, method, source, matched_question, category
     });
     
   } catch (e) {
     console.error("Solve error:", e);
-    res.status(500).json({ error: "AI Tutor failed to solve the problem" });
+    res.status(500).json({ 
+      success: false,
+      error: "AI Tutor failed to solve the problem",
+      final_answer: "Sorry, I couldn't solve this problem. Please try again.",
+      solution_steps: []
+    });
   }
 });
 
@@ -68,17 +70,21 @@ router.post("/tutor-help", auth, async (req, res) => {
     
     res.json({
       success: true,
-      tutor_response: result.tutor_response,
+      final_answer: result.final_answer || "I'll help you solve this step by step:",
       solution_steps: result.solution_steps || [],
       hints: result.hints || [],
-      confidence: result.confidence || 0,
       has_graph: result.has_graph || false,
       graph_image: result.graph_image || null
     });
     
   } catch (e) {
     console.error("Tutor help error:", e);
-    res.status(500).json({ error: "Failed to get tutor help" });
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to get tutor help",
+      final_answer: "Sorry, I couldn't provide help for this problem.",
+      solution_steps: []
+    });
   }
 });
 

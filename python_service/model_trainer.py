@@ -1,4 +1,3 @@
-# model_trainer.py (Fixed - Actually trains lesson generator)
 import json
 import joblib
 import os
@@ -283,36 +282,50 @@ class TrueAITutor:
         self.questions = []
         self.solutions = []
         self.alternative_solutions = []
+        self.final_answers = []
         self.categories = []
         self.question_ids = []
-        self.plotting_data = []  # Store graph data
+        self.plotting_data = []
         
         # AI Learning Components
         self.similarity_threshold = 0.0
         self.question_patterns = {}
-        
+    
     def load_dataset(self):
         """Load the trigonometric dataset"""
-        with open(DATASET_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return data
+        try:
+            with open(DATASET_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            return data
+        except FileNotFoundError:
+            print("❌ trig_dataset.json not found")
+            return {}
     
     def extract_training_data(self):
-        """Extract questions, solutions, AND graph data"""
+        """Extract questions, solutions, AND graph data - FIXED VERSION"""
         questions = []
         solutions = []
         alternative_solutions = []
+        final_answers = []
         categories = []
         question_ids = []
-        plotting_data = []  # Store plotting information
+        plotting_data = []
+        
+        print("   🔍 Extracting questions and graph data...")
         
         for category_name, items in self.dataset.items():
-            if category_name != "metadata" and isinstance(items, list):
+            if category_name != "metadata" and category_name != "lessons" and isinstance(items, list):
+                print(f"      Processing category: {category_name} ({len(items)} items)")
+                
                 for item in items:
                     if isinstance(item, dict) and "question" in item:
                         questions.append(item["question"])
                         categories.append(category_name)
                         question_ids.append(item.get("id", "unknown"))
+                        
+                        # Extract final_answer if available
+                        final_answer = item.get("final_answer", "")
+                        final_answers.append(final_answer)
                         
                         # Main solution
                         if "step_by_step_solution" in item:
@@ -334,22 +347,30 @@ class TrueAITutor:
                                 break
                         alternative_solutions.append(alt_sol)
                         
-                        # Extract plotting data if available
+                        # Extract plotting data
                         plot_info = {}
-                        if "plotting_instructions" in item:
+                        
+                        if "plotting_instructions" in item and item["plotting_instructions"]:
                             plot_info = item["plotting_instructions"]
-                        elif "matplotlib_code" in item:
-                            plot_info = {"matplotlib_code": item["matplotlib_code"]}
+                            print(f"        📈 Found plotting_instructions for: {item.get('id', 'unknown')}")
+                        
+                        if "matplotlib_code" in item and item["matplotlib_code"]:
+                            plot_info["matplotlib_code"] = item["matplotlib_code"]
+                            print(f"        📊 Found matplotlib_code for: {item.get('id', 'unknown')}")
+                        
+                        question_lower = item["question"].lower()
+                        if any(keyword in question_lower for keyword in ['sketch', 'graph', 'plot', 'draw']):
+                            if not plot_info:
+                                plot_info = {"needs_graph": True, "question_type": "graph"}
                         
                         plotting_data.append(plot_info)
         
-        return questions, solutions, alternative_solutions, categories, question_ids, plotting_data
+        return questions, solutions, alternative_solutions, final_answers, categories, question_ids, plotting_data
     
     def _learn_semantic_relationships(self):
         """AI learns how questions relate to each other semantically"""
         print("   🔍 Learning semantic relationships...")
         
-        # Calculate similarity distribution to set intelligent thresholds
         sample_similarities = []
         for i in range(min(100, len(self.questions))):
             for j in range(i+1, min(i+20, len(self.questions))):
@@ -359,7 +380,6 @@ class TrueAITutor:
                 )[0][0]
                 sample_similarities.append(sim)
         
-        # AI learns: 80th percentile is "very similar" in our dataset
         if sample_similarities:
             self.similarity_threshold = np.percentile(sample_similarities, 80)
         else:
@@ -376,10 +396,9 @@ class TrueAITutor:
             'patterns': [],
             'operations': [],
             'functions': [],
-            'needs_graph': False  # Detect if graph is needed
+            'needs_graph': False
         }
         
-        # AI detects question type
         if any(word in question_lower for word in ['prove', 'verify', 'show that', 'identity']):
             intent['type'] = 'proof'
             intent['patterns'].append('type_proof')
@@ -389,16 +408,14 @@ class TrueAITutor:
         elif any(word in question_lower for word in ['sketch', 'graph', 'plot']):
             intent['type'] = 'graph'
             intent['patterns'].append('type_graph')
-            intent['needs_graph'] = True  # This question needs a graph
+            intent['needs_graph'] = True
         
-        # AI detects mathematical functions
         math_funcs = ['sin', 'cos', 'tan', 'sec', 'csc', 'cot']
         for func in math_funcs:
             if func in question_lower:
                 intent['functions'].append(func)
                 intent['patterns'].append(f'func_{func}')
         
-        # Detect graph-related keywords
         graph_keywords = ['sketch', 'graph', 'plot', 'draw', 'curve', 'wave']
         if any(keyword in question_lower for keyword in graph_keywords):
             intent['needs_graph'] = True
@@ -412,7 +429,6 @@ class TrueAITutor:
         
         pattern_counts = {}
         for i, question in enumerate(self.questions):
-            # AI extracts mathematical intent patterns
             intent = self._ai_analyze_question_intent(question)
             
             for pattern in intent['patterns']:
@@ -423,7 +439,6 @@ class TrueAITutor:
                 pattern_counts[pattern] += 1
         
         print(f"   ✅ Learned {len(self.question_patterns)} question patterns")
-        # Show top patterns
         top_patterns = sorted(pattern_counts.items(), key=lambda x: x[1], reverse=True)[:5]
         for pattern, count in top_patterns:
             print(f"      {pattern}: {count} questions")
@@ -432,17 +447,13 @@ class TrueAITutor:
         """AI learns to understand questions including graph-related ones"""
         print("🧠 AI LEARNING: Understanding question patterns...")
         
-        # 1. AI learns semantic relationships between questions
         print("   📥 Loading semantic model...")
         self.semantic_model = SentenceTransformer('all-MiniLM-L6-v2')
         
         print("   🔄 Creating question embeddings...")
         self.question_embeddings = self.semantic_model.encode(self.questions)
         
-        # 2. AI learns which questions are similar to each other
         self._learn_semantic_relationships()
-        
-        # 3. AI learns question patterns and categories
         self._learn_question_categories()
         
         print("✅ AI Understanding Training Complete!")
@@ -452,29 +463,34 @@ class TrueAITutor:
         print("🚀 TRUE AI TUTOR TRAINING")
         print("Learning to understand questions, using dataset answers + graphs")
         
-        # Extract data including plotting information
         (self.questions, self.solutions, self.alternative_solutions, 
-         self.categories, self.question_ids, self.plotting_data) = self.extract_training_data()
+         self.final_answers, self.categories, self.question_ids, self.plotting_data) = self.extract_training_data()
+        
+        if not self.questions:
+            print("❌ No questions found in dataset!")
+            return
         
         print(f"📊 Training AI on {len(self.questions)} dataset questions")
-        print(f"📈 Found {sum(1 for p in self.plotting_data if p)} questions with graph data")
+        print(f"📝 Found {sum(1 for fa in self.final_answers if fa)} questions with final_answer field")
         
-        # AI learns understanding
+        graph_questions = sum(1 for p in self.plotting_data if p and (p.get('matplotlib_code') or p.get('function_type')))
+        print(f"📈 Found {graph_questions} questions with graph data")
+        
         self.train_ai_understanding()
-        # 🚨 ADD THIS SECTION TO TRAIN LESSON GENERATOR 🚨
+        
         print("\n" + "="*60)
         print("📚 TRAINING LESSON GENERATOR")
         lesson_generator = LessonGenerator()
         lesson_trained = lesson_generator.train()
         
-        # Save the trained AI
         model_data = {
             'questions': self.questions,
             'solutions': self.solutions,
             'alternative_solutions': self.alternative_solutions,
+            'final_answers': self.final_answers,
             'categories': self.categories,
             'question_ids': self.question_ids,
-            'plotting_data': self.plotting_data,  # Include graph data
+            'plotting_data': self.plotting_data,
             'semantic_model': self.semantic_model,
             'question_embeddings': self.question_embeddings,
             'similarity_threshold': self.similarity_threshold,
@@ -485,7 +501,8 @@ class TrueAITutor:
         joblib.dump(model_data, MODEL_PATH)
         print(f"💾 True AI Tutor saved at {MODEL_PATH}")
         print("🎉 AI can now understand questions AND generate graphs!")
-        print(f"📊 Graph-ready questions: {sum(1 for p in self.plotting_data if p)}")
+        print(f"📊 Graph-ready questions: {graph_questions}")
+        print(f"📝 Questions with final_answer: {sum(1 for fa in self.final_answers if fa)}")
 
 def train_model():
     """Main training function"""

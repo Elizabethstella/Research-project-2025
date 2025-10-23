@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import re
 import matplotlib
-matplotlib.use('Agg')  # For saving images without display
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import tempfile
 import base64
@@ -24,6 +24,8 @@ class TrigSolver:
             print("✅ AI Tutor model loaded successfully!")
             print(f"📊 Loaded {len(self.model_data['questions'])} questions")
             print(f"📝 Loaded {len(self.model_data['solutions'])} solutions")
+            if 'final_answers' in self.model_data:
+                print(f"✅ Loaded {sum(1 for fa in self.model_data['final_answers'] if fa)} final answers")
         except Exception as e:
             print(f"❌ Error loading model: {e}")
             self.model_data = None
@@ -33,24 +35,20 @@ class TrigSolver:
         if not self.model_data:
             return []
         
-        # STRATEGY 1: AI Semantic Understanding (Primary)
         user_embedding = self.model_data['semantic_model'].encode([user_question])
         semantic_similarities = cosine_similarity(user_embedding, self.model_data['question_embeddings'])[0]
         
-        # AI applies learned threshold
         semantic_matches = []
         for i, similarity in enumerate(semantic_similarities):
             if similarity >= self.model_data['similarity_threshold']:
                 semantic_matches.append((i, similarity, "ai_semantic"))
         
-        # STRATEGY 2: AI Pattern Recognition (Secondary)
         user_intent = self._ai_analyze_question_intent(user_question)
         pattern_matches = []
         
         for pattern in user_intent['patterns']:
             if pattern in self.model_data['question_patterns']:
                 for question_idx in self.model_data['question_patterns'][pattern]:
-                    # Calculate similarity for pattern matches
                     similarity = cosine_similarity(
                         user_embedding, 
                         [self.model_data['question_embeddings'][question_idx]]
@@ -58,7 +56,6 @@ class TrigSolver:
                     if similarity >= self.model_data['similarity_threshold'] - 0.1:
                         pattern_matches.append((question_idx, similarity, f"ai_pattern_{pattern}"))
         
-        # COMBINE and RANK all AI matches
         all_matches = semantic_matches + pattern_matches
         all_matches.sort(key=lambda x: x[1], reverse=True)
         
@@ -75,7 +72,6 @@ class TrigSolver:
             'functions': []
         }
         
-        # AI detects question type
         if any(word in question_lower for word in ['prove', 'verify', 'show that', 'identity']):
             intent['type'] = 'proof'
             intent['patterns'].append('type_proof')
@@ -86,7 +82,6 @@ class TrigSolver:
             intent['type'] = 'graph'
             intent['patterns'].append('type_graph')
         
-        # AI detects mathematical functions
         math_funcs = ['sin', 'cos', 'tan', 'sec', 'csc', 'cot']
         for func in math_funcs:
             if func in question_lower:
@@ -104,7 +99,6 @@ class TrigSolver:
             'needs_explanation': False
         }
         
-        # AI understands solution approach requests
         if any(phrase in user_question_lower for phrase in 
                ['from lhs', 'left hand side', 'start with lhs', 'lhs method']):
             intent['approach'] = 'lhs'
@@ -118,52 +112,59 @@ class TrigSolver:
         return intent
     
     def get_solution_from_dataset(self, question_idx, user_question):
-        """GET ORIGINAL SOLUTION FROM DATASET - No generation, only retrieval"""
+        """GET ORIGINAL SOLUTION FROM DATASET - Now includes final_answer"""
         try:
-            # Get main solution
             main_solution = self.model_data['solutions'][question_idx]
             alternative_solution = self.model_data['alternative_solutions'][question_idx]
             
-            # AI analyzes user intent to choose which dataset solution to return
+            # Get final_answer from dataset if available
+            final_answer = None
+            if 'final_answers' in self.model_data and question_idx < len(self.model_data['final_answers']):
+                final_answer = self.model_data['final_answers'][question_idx]
+            
             user_intent = self._ai_analyze_user_request(user_question)
             
             if user_intent['approach'] == 'lhs' and alternative_solution and len(alternative_solution) > 0:
-                return alternative_solution, "LHS Approach (From Dataset)"
+                return alternative_solution, "LHS Approach (From Dataset)", final_answer
             elif user_intent['approach'] == 'alternative' and alternative_solution and len(alternative_solution) > 0:
-                return alternative_solution, "Alternative Method (From Dataset)"
+                return alternative_solution, "Alternative Method (From Dataset)", final_answer
             elif user_intent['approach'] == 'rhs':
-                return main_solution, "RHS Approach (From Dataset)"
+                return main_solution, "RHS Approach (From Dataset)", final_answer
             else:
-                return main_solution, "Standard Solution (From Dataset)"
+                return main_solution, "Standard Solution (From Dataset)", final_answer
                 
         except Exception as e:
             print(f"❌ Error getting solution from dataset: {e}")
-            # Return a fallback solution
             fallback_solution = ["I found a matching question but couldn't retrieve the solution. Please try rephrasing."]
-            return fallback_solution, "Fallback Solution"
+            return fallback_solution, "Fallback Solution", None
     
     def extract_final_answer(self, solution_steps):
-        """Extract the final answer from solution steps"""
+        """Extract the final answer from solution steps - IMPROVED"""
         if not solution_steps or len(solution_steps) == 0:
             return "No solution available"
         
-        # Look for the last step that contains key answer indicators
-        answer_indicators = ['=', 'answer', 'final', 'therefore', 'thus', 'result']
+        # Look for steps that contain actual answers
+        answer_indicators = [
+            'final answer', 'answer:', 'solution:', 'result:', '=',
+            'therefore', 'thus', 'hence', 'so we get', 'we obtain'
+        ]
         
-        # Check the last step first (most likely to contain final answer)
-        last_step = solution_steps[-1].lower()
-        for indicator in answer_indicators:
-            if indicator in last_step:
-                return solution_steps[-1]
-        
-        # Check all steps for answer indicators
+        # Priority 1: Look for steps that explicitly mention "final answer"
         for step in reversed(solution_steps):
             step_lower = step.lower()
-            for indicator in answer_indicators:
-                if indicator in step_lower:
+            if any(indicator in step_lower for indicator in ['final answer', 'answer:', 'solution:']):
+                if ':' in step:
+                    return step.split(':', 1)[1].strip()
+                return step
+        
+        # Priority 2: Look for the last step that contains mathematical results
+        for step in reversed(solution_steps):
+            step_lower = step.lower()
+            if any(indicator in step_lower for indicator in answer_indicators):
+                if any(math_char in step for math_char in ['=', '≈', '°', 'π', 'sin', 'cos', 'tan']):
                     return step
         
-        # If no clear answer found, return the last step
+        # Priority 3: If no clear answer found, return the last step
         return solution_steps[-1]
     
     def generate_graph(self, plotting_instructions, question_text):
@@ -172,11 +173,9 @@ class TrigSolver:
             if not plotting_instructions:
                 return None
                 
-            # Method 1: Use provided matplotlib code
             if 'matplotlib_code' in plotting_instructions:
                 return self._execute_matplotlib_code(plotting_instructions['matplotlib_code'], question_text)
             
-            # Method 2: Generate from plotting instructions
             elif 'equations' in plotting_instructions:
                 return self._generate_from_instructions(plotting_instructions, question_text)
             
@@ -189,13 +188,9 @@ class TrigSolver:
     def _execute_matplotlib_code(self, code, title):
         """Execute the matplotlib code from dataset"""
         try:
-            # Create a new figure
             plt.figure(figsize=(10, 6))
-            
-            # Execute the code
             exec(code)
             
-            # Convert plot to base64 image
             buf = BytesIO()
             plt.savefig(buf, format='png', dpi=150, bbox_inches='tight')
             plt.close()
@@ -213,20 +208,16 @@ class TrigSolver:
         try:
             plt.figure(figsize=(10, 6))
             
-            # Extract plotting parameters
             equations = instructions.get('equations', [])
             domain = instructions.get('domain', [0, 360])
             x_scale = instructions.get('x_scale', 'degrees')
             
-            # Generate x values
             x = np.linspace(domain[0], domain[1], 200)
             
-            # Plot each equation
             colors = ['blue', 'red', 'green', 'orange', 'purple']
             for i, equation in enumerate(equations):
                 color = colors[i % len(colors)]
                 
-                # Simple equation parsing (you can enhance this)
                 if 'sin' in equation:
                     if '2x' in equation:
                         y = np.sin(2 * np.radians(x))
@@ -237,7 +228,6 @@ class TrigSolver:
                     
                     plt.plot(x, y, color=color, linewidth=2, label=equation)
             
-            # Add labels and grid
             plt.grid(True, alpha=0.3)
             plt.axhline(y=0, color='black', linewidth=0.5)
             plt.axvline(x=0, color='black', linewidth=0.5)
@@ -247,7 +237,6 @@ class TrigSolver:
             plt.legend()
             plt.xlim(domain)
             
-            # Convert to base64
             buf = BytesIO()
             plt.savefig(buf, format='png', dpi=150, bbox_inches='tight')
             plt.close()
@@ -271,7 +260,6 @@ class TrigSolver:
                 "source": "error"
             }
 
-        # AI finds best matches
         ai_matches = self.ai_find_best_match(user_question)
 
         if not ai_matches:
@@ -283,34 +271,31 @@ class TrigSolver:
                 "source": "ai_understanding"
             }
 
-        # Get the best AI match
         best_idx, confidence, method = ai_matches[0]
-
-        # Convert confidence to Python float
         confidence = float(confidence)
 
-        # Get solution from dataset
-        solution_steps, solution_type = self.get_solution_from_dataset(best_idx, user_question)
+        # Get solution from dataset - NOW INCLUDES FINAL_ANSWER
+        solution_steps, solution_type, final_answer = self.get_solution_from_dataset(best_idx, user_question)
 
-        # Ensure solution is a list of strings
+        # Use the dataset's final_answer if available, otherwise extract from steps
+        if final_answer:
+            actual_final_answer = final_answer
+        else:
+            actual_final_answer = self.extract_final_answer(solution_steps)
+
         if solution_steps and not isinstance(solution_steps, list):
             solution_steps = [str(solution_steps)]
         elif not solution_steps:
             solution_steps = ["Solution not available in dataset."]
 
-        # Extract final answer from solution steps
-        final_answer = self.extract_final_answer(solution_steps)
-
-        # Generate graph if available
         graph_image = None
         plotting_data = self.model_data["plotting_data"][best_idx] if best_idx < len(self.model_data["plotting_data"]) else {}
 
         if plotting_data:
             graph_image = self.generate_graph(plotting_data, self.model_data["questions"][best_idx])
 
-        # Build JSON-safe response
         response = {
-            "final_answer": str(final_answer),
+            "final_answer": str(actual_final_answer),
             "solution_steps": [str(step) for step in solution_steps],
             "confidence": confidence,
             "method": str(method),
@@ -323,7 +308,6 @@ class TrigSolver:
             "graph_image": str(graph_image) if graph_image else None
         }
 
-        # Convert all NumPy types to pure Python recursively
         def to_serializable(obj):
             if isinstance(obj, (np.generic, np.float32, np.float64)):
                 return float(obj)
@@ -379,7 +363,6 @@ if __name__ == "__main__":
         for i, step in enumerate(result['solution_steps']):
             print(f"   {i+1}. {step}")
         
-        # Graph information
         if result['has_graph']:
             print(f"\n📈 GRAPH GENERATED!")
             print(f"   Graph saved as base64 image (ready for web display)")

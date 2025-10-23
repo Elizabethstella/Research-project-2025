@@ -41,6 +41,9 @@ print("🔄 Loading AI Tutor (TrigSolver)...")
 try:
     ai_tutor = TrigSolver()
     print("✅ AI Tutor model loaded successfully!")
+    if hasattr(ai_tutor.model_data, 'final_answers'):
+        final_answers_count = sum(1 for fa in ai_tutor.model_data.get('final_answers', []) if fa)
+        print(f"📝 Loaded {final_answers_count} final answers from dataset")
 except Exception as e:
     print(f"❌ Error loading AI Tutor: {e}")
     ai_tutor = None
@@ -61,6 +64,7 @@ def home():
                 "POST /process-image - OCR image processing",
                 "GET /lesson_topics - Get available topics",
                 "GET /lesson_stats - Get lesson statistics",
+                "GET /graph_status - Check graph functionality",
             ],
         }
     )
@@ -82,6 +86,11 @@ def solve_trig():
         result = ai_tutor.solve(question)
         safe_result = make_json_safe(result)
 
+        # ✅ Ensure the frontend always gets solution_steps
+        if "solution" in safe_result and "solution_steps" not in safe_result:
+            safe_result["solution_steps"] = safe_result["solution"]
+            del safe_result["solution"]
+
         return jsonify({"success": True, **safe_result})
 
     except Exception as e:
@@ -102,25 +111,37 @@ def tutor_help():
         result = ai_tutor.solve(problem)
         safe_result = make_json_safe(result)
 
-        return jsonify(
-            {
-                "success": True,
-                "problem": problem,
-                "tutor_response": "I'll help you solve this step by step:",
-                "final_answer": safe_result.get("final_answer", ""),
-                "solution_steps": safe_result.get("solution_steps", []),
-                "confidence": safe_result.get("confidence", 0),
-                "matched_question": safe_result.get("matched_question", ""),
-                "method_used": safe_result.get("method", ""),
-                "has_graph": safe_result.get("has_graph", False),
-                "graph_image": safe_result.get("graph_image"),
-                "hints": [
-                    "Break the problem into smaller parts",
-                    "Remember trigonometric identities",
-                    "Check if you need to work in degrees or radians",
-                ],
-            }
-        )
+        # Enhanced response with graph support
+        response_data = {
+            "success": True,
+            "problem": problem,
+            "tutor_response": "I'll help you solve this step by step:",
+            "final_answer": safe_result.get("final_answer", ""),
+            "solution_steps": safe_result.get("solution_steps", []),
+            "confidence": safe_result.get("confidence", 0),
+            "matched_question": safe_result.get("matched_question", ""),
+            "method_used": safe_result.get("method", ""),
+            "has_graph": safe_result.get("has_graph", False),
+            "graph_image": safe_result.get("graph_image"),
+            "category": safe_result.get("category", ""),
+            "question_id": safe_result.get("question_id", ""),
+            "solution_type": safe_result.get("solution_type", ""),
+            "hints": [
+                "Break the problem into smaller parts",
+                "Remember trigonometric identities",
+                "Check if you need to work in degrees or radians",
+            ],
+        }
+
+        # Add graph-specific hints if it's a graphing question
+        if safe_result.get("has_graph", False):
+            response_data["hints"].extend([
+                "Pay attention to the scale (degrees vs radians)",
+                "Look for key points like intercepts and maxima/minima",
+                "Note the period and amplitude of the function"
+            ])
+
+        return jsonify(response_data)
     except Exception as e:
         return jsonify({"error": f"Tutor help failed: {str(e)}"}), 500
 
@@ -165,26 +186,44 @@ def graph_generation():
         data = request.get_json()
         question = data.get("question", "")
         expression = data.get("expression", "")
+        
         if not question and not expression:
             return jsonify({"error": "Please provide a question or expression"}), 400
 
         input_text = question if question else expression
+        
+        # First try using the TrigSolver for graph generation
+        if ai_tutor:
+            result = ai_tutor.solve(input_text)
+            if result.get("has_graph", False) and result.get("graph_image"):
+                return jsonify({
+                    "success": True,
+                    "image": result["graph_image"],
+                    "question": question,
+                    "expression": expression,
+                    "source": "trig_solver",
+                    "has_graph": True
+                })
+        
+        # Fallback to the legacy graph generator
         graph_data = generate_graph_for_question(input_text)
-
         if graph_data:
             image_base64 = base64.b64encode(graph_data).decode("utf-8")
-            return jsonify(
-                make_json_safe(
-                    {
-                        "success": True,
-                        "image": f"data:image/png;base64,{image_base64}",
-                        "question": question,
-                        "expression": expression,
-                    }
-                )
-            )
+            return jsonify({
+                "success": True,
+                "image": f"data:image/png;base64,{image_base64}",
+                "question": question,
+                "expression": expression,
+                "source": "legacy_generator",
+                "has_graph": True
+            })
         else:
-            return jsonify({"error": "Could not generate graph"}), 500
+            return jsonify({
+                "success": False,
+                "error": "Could not generate graph",
+                "has_graph": False
+            }), 500
+            
     except Exception as e:
         return jsonify({"error": f"Graph generation failed: {str(e)}"}), 500
 
@@ -283,9 +322,75 @@ def quiz_stats():
         return jsonify({"error": str(e)}), 500
 
 
+# ---------- NEW GRAPH STATUS ENDPOINT ----------
+@app.route("/graph_status", methods=["GET"])
+def graph_status():
+    """Check if graph functionality is working"""
+    try:
+        if not ai_tutor:
+            return jsonify({"graph_enabled": False, "message": "AI Tutor not loaded"})
+        
+        # Test with a known graphing question
+        test_result = ai_tutor.solve("Sketch y = sin x")
+        
+        return jsonify({
+            "graph_enabled": True,
+            "has_graph": test_result.get("has_graph", False),
+            "test_question": "Sketch y = sin x",
+            "graph_image_available": test_result.get("graph_image") is not None,
+            "graph_image_size": len(test_result.get("graph_image", "")),
+            "message": "Graph functionality is working correctly"
+        })
+    except Exception as e:
+        return jsonify({"graph_enabled": False, "error": str(e)})
+
+
+# ---------- FINAL ANSWER TEST ENDPOINT ----------
+@app.route("/test_final_answer", methods=["POST"])
+def test_final_answer():
+    """Test endpoint to verify final answer extraction"""
+    try:
+        if not ai_tutor:
+            return jsonify({"error": "AI Tutor not loaded"}), 500
+            
+        data = request.get_json()
+        question = data.get("question", "Find the exact value of sin(30°)")
+        
+        result = ai_tutor.solve(question)
+        
+        return jsonify({
+            "success": True,
+            "question": question,
+            "final_answer": result.get("final_answer"),
+            "solution_steps": result.get("solution_steps", []),
+            "has_graph": result.get("has_graph", False),
+            "matched_question": result.get("matched_question", "")
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 # ---------- START SERVER ----------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 7000))
     print(f"\n🚀 AS TrigTutor Flask service running on http://127.0.0.1:{port}")
     print(f"🤖 AI Tutor Status: {'✅ Loaded' if ai_tutor else '❌ Not loaded'}")
+    
+    # Test final answer functionality on startup
+    if ai_tutor:
+        print("\n🧪 Testing final answer extraction...")
+        test_questions = [
+            "Find the exact value of sin(30°)",
+            "Sketch y = sin x",
+            "Solve sin x = 0.5"
+        ]
+        
+        for test_q in test_questions:
+            try:
+                result = ai_tutor.solve(test_q)
+                print(f"   📝 '{test_q}'")
+                print(f"   ✅ Final answer: {result.get('final_answer', 'N/A')}")
+            except Exception as e:
+                print(f"   ❌ Error testing '{test_q}': {e}")
+    
     app.run(host="0.0.0.0", port=port, debug=True)
