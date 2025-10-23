@@ -25,7 +25,8 @@ class TrigSolver:
             print(f"📊 Loaded {len(self.model_data['questions'])} questions")
             print(f"📝 Loaded {len(self.model_data['solutions'])} solutions")
             if 'final_answers' in self.model_data:
-                print(f"✅ Loaded {sum(1 for fa in self.model_data['final_answers'] if fa)} final answers")
+                final_answers_count = sum(1 for fa in self.model_data['final_answers'] if fa)
+                print(f"✅ Loaded {final_answers_count} final answers")
         except Exception as e:
             print(f"❌ Error loading model: {e}")
             self.model_data = None
@@ -139,7 +140,7 @@ class TrigSolver:
             return fallback_solution, "Fallback Solution", None
     
     def extract_final_answer(self, solution_steps):
-        """Extract the final answer from solution steps - IMPROVED"""
+        """Extract the final answer from solution steps - SIMPLIFIED VERSION"""
         if not solution_steps or len(solution_steps) == 0:
             return "No solution available"
         
@@ -274,25 +275,33 @@ class TrigSolver:
         best_idx, confidence, method = ai_matches[0]
         confidence = float(confidence)
 
-        # Get solution from dataset - NOW INCLUDES FINAL_ANSWER
+        # Get solution from dataset
         solution_steps, solution_type, final_answer = self.get_solution_from_dataset(best_idx, user_question)
 
-        # Use the dataset's final_answer if available, otherwise extract from steps
-        if final_answer:
-            actual_final_answer = final_answer
+        # Generate graph if available
+        graph_image = None
+        has_plotting_data = False
+        plotting_data = self.model_data["plotting_data"][best_idx] if best_idx < len(self.model_data["plotting_data"]) else {}
+
+        if plotting_data:
+            graph_image = self.generate_graph(plotting_data, self.model_data["questions"][best_idx])
+            has_plotting_data = bool(plotting_data)
+
+        # Determine the final answer based on whether it's a graph question
+        if has_plotting_data and graph_image:
+            # For graph questions, the graph IS the answer
+            actual_final_answer = "See graph below for the solution"
         else:
-            actual_final_answer = self.extract_final_answer(solution_steps)
+            # For non-graph questions, use the dataset's final_answer if available
+            if final_answer:
+                actual_final_answer = final_answer
+            else:
+                actual_final_answer = self.extract_final_answer(solution_steps)
 
         if solution_steps and not isinstance(solution_steps, list):
             solution_steps = [str(solution_steps)]
         elif not solution_steps:
             solution_steps = ["Solution not available in dataset."]
-
-        graph_image = None
-        plotting_data = self.model_data["plotting_data"][best_idx] if best_idx < len(self.model_data["plotting_data"]) else {}
-
-        if plotting_data:
-            graph_image = self.generate_graph(plotting_data, self.model_data["questions"][best_idx])
 
         response = {
             "final_answer": str(actual_final_answer),
