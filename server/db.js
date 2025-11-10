@@ -55,7 +55,22 @@ class Database {
         total_time_seconds INTEGER DEFAULT 0,
         FOREIGN KEY(user_id) REFERENCES users(id)
       );
-    `;
+       CREATE TABLE IF NOT EXISTS student_progress (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  topic_id TEXT NOT NULL,
+  completion_percentage INTEGER DEFAULT 0,
+  completed BOOLEAN DEFAULT 0,
+  pre_test_score INTEGER,
+  post_test_score INTEGER,
+  current_step TEXT DEFAULT 'pre_test',
+  time_spent INTEGER DEFAULT 0,
+  last_accessed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE(user_id, topic_id)
+);
+
+ `;
 
     this.db.exec(schema, (err) => {
       if (err) {

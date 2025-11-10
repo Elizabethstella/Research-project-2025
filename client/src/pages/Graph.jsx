@@ -28,7 +28,7 @@ export default function Graph() {
     setError("");
     
     try {
-      const res = await api.post("/generate-graph", {
+      const res = await api.post("/graph", {
         expression: graphExpression,
         question: `Graph the function: ${graphExpression}`
       });

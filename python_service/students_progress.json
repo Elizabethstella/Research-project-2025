@@ -1,0 +1,127 @@
+{
+  "test_student_001": {
+    "topics": {},
+    "active_lessons": [],
+    "completed_lessons": [],
+    "statistics": {
+      "total_learning_time": 0,
+      "topics_started": 0,
+      "topics_completed": 0,
+      "average_improvement": 0
+    },
+    "last_activity": "2025-11-10T19:29:53.164918",
+    "created_at": "2025-11-10T19:29:53.164918"
+  },
+  "1": {
+    "topics": {
+      "trigonometric_identities": {
+        "status": "in_progress",
+        "started_at": "2025-11-11T00:00:58.798227",
+        "current_lesson": 0,
+        "current_section": 0,
+        "total_lessons": 4,
+        "completion_percentage": 0.0,
+        "pre_test_score": null,
+        "post_test_score": null,
+        "current_step": "pre_test",
+        "lesson_progress": {},
+        "time_spent": 10,
+        "last_accessed": "2025-11-11T00:07:59.318039",
+        "sections_completed": 0,
+        "total_sections": 4,
+        "syllabus_code": "8227",
+        "theme": "Mathematics 1",
+        "topic_number": "Topic 6",
+        "questions_asked": 2
+      },
+      "trigonometric_equations": {
+        "status": "in_progress",
+        "started_at": "2025-11-11T00:12:17.926587",
+        "current_lesson": 0,
+        "current_section": 0,
+        "total_lessons": 5,
+        "completion_percentage": 0.0,
+        "pre_test_score": null,
+        "post_test_score": null,
+        "current_step": "pre_test",
+        "lesson_progress": {},
+        "time_spent": 5,
+        "last_accessed": "2025-11-11T00:12:19.505007",
+        "sections_completed": 0,
+        "total_sections": 5,
+        "syllabus_code": "8227",
+        "theme": "Mathematics 1",
+        "topic_number": "Topic 6",
+        "questions_asked": 1
+      }
+    },
+    "active_lessons": [
+      "trigonometric_identities",
+      "trigonometric_equations"
+    ],
+    "completed_lessons": [],
+    "statistics": {
+      "total_learning_time": 0,
+      "topics_started": 2,
+      "topics_completed": 0,
+      "average_improvement": 0
+    },
+    "last_activity": "2025-11-11T00:00:58.797211",
+    "created_at": "2025-11-11T00:00:58.797211"
+  },
+  "1": {
+    "topics": {
+      "trigonometric_equations": {
+        "status": "in_progress",
+        "started_at": "2025-11-11T00:18:34.052585",
+        "current_lesson": 0,
+        "current_section": 0,
+        "total_lessons": 5,
+        "completion_percentage": 0,
+        "pre_test_score": null,
+        "post_test_score": null,
+        "current_step": "pre_test",
+        "lesson_progress": {},
+        "time_spent": 0,
+        "last_accessed": "2025-11-11T00:18:34.052585",
+        "sections_completed": 0,
+        "total_sections": 5,
+        "syllabus_code": "8227",
+        "theme": "Mathematics 1",
+        "topic_number": "Topic 6"
+      },
+      "circular_measure": {
+        "status": "in_progress",
+        "started_at": "2025-11-11T00:19:01.473058",
+        "current_lesson": 0,
+        "current_section": 1,
+        "total_lessons": 4,
+        "completion_percentage": 25.0,
+        "pre_test_score": null,
+        "post_test_score": null,
+        "current_step": "pre_test",
+        "lesson_progress": {},
+        "time_spent": 0,
+        "last_accessed": "2025-11-11T00:19:14.899639",
+        "sections_completed": 1,
+        "total_sections": 4,
+        "syllabus_code": "8227",
+        "theme": "Mathematics 1",
+        "topic_number": "Topic 5"
+      }
+    },
+    "active_lessons": [
+      "trigonometric_equations",
+      "circular_measure"
+    ],
+    "completed_lessons": [],
+    "statistics": {
+      "total_learning_time": 0,
+      "topics_started": 2,
+      "topics_completed": 0,
+      "average_improvement": 0
+    },
+    "last_activity": "2025-11-11T00:18:34.051061",
+    "created_at": "2025-11-11T00:18:34.051061"
+  }
+}

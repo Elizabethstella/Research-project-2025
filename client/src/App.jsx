@@ -2,14 +2,18 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Lesson from "./pages/Lesson.jsx";
-import Quiz from "./pages/Quiz.jsx";
+import GenerateLesson from "./pages/GenerateLesson.jsx";
 import Graph from "./pages/Graph.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import AdminDashboard from "./pages/AdminDashboard.jsx";
+
+
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+
+
+// Add a route for testing
+
 
 export default function App() {
   return (
@@ -41,10 +45,10 @@ export default function App() {
           }
         />
         <Route
-          path="/quiz"
+          path="/generate-lesson"
           element={
             <ProtectedRoute>
-              <Quiz />
+              <GenerateLesson />
             </ProtectedRoute>
           }
         />
@@ -57,23 +61,6 @@ export default function App() {
           }
         />
 
-        {/* User Management Routes */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
 
         {/* Fallback Route */}
         <Route path="*" element={

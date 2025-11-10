@@ -22,7 +22,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
       <div className="container">
         <Link className="navbar-brand fw-bold" to="/home">
-        SineWise🧠 
+        SineWise 
         </Link>
         
         <button 
@@ -36,32 +36,34 @@ export default function Navbar() {
         
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
-            {/* AI Tutor Features */}
-            <li className="nav-item">
-              <Link 
-                className={`nav-link ${location.pathname === "/home" ? "active" : ""}`} 
-                to="/home"
-              >
-                🤖 AI Tutor
-              </Link>
-            </li>
-            
             {/* Learning Tools */}
             <li className="nav-item">
               <Link 
                 className={`nav-link ${location.pathname === "/lesson" ? "active" : ""}`} 
                 to="/lesson"
               >
-                📚 Lessons
+                AI Tutor
+              </Link>
+            </li>
+
+            {/* AI Tutor Features */}
+            <li className="nav-item">
+              <Link 
+                className={`nav-link ${location.pathname === "/home" ? "active" : ""}`} 
+                to="/home"
+              >
+                 AI Solver
               </Link>
             </li>
             
+            
+            
             <li className="nav-item">
               <Link 
-                className={`nav-link ${location.pathname === "/quiz" ? "active" : ""}`} 
-                to="/quiz"
+                className={`nav-link ${location.pathname === "/generate-lesson" ? "active" : ""}`} 
+                to="/generate-lesson"
               >
-                🧠 Quiz
+                Lesson Generation
               </Link>
             </li>
             
@@ -75,14 +77,7 @@ export default function Navbar() {
             </li>
 
             {/* User Management */}
-            <li className="nav-item">
-              <Link 
-                className={`nav-link ${location.pathname === "/dashboard" ? "active" : ""}`} 
-                to="/dashboard"
-              >
-                📊 Dashboard
-              </Link>
-            </li>
+      
 
             {/* Admin Only */}
             {user.role === "admin" && (

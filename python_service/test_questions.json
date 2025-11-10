@@ -1,0 +1,220 @@
+{
+  "dataset": [
+    {
+      "category": "Fundamentals",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Find the exact value of sin(30°)",
+          "source": "textbook"
+     
+        },
+        {
+          "id": 2,
+          "question": "Find the exact value of cos(45°)",
+          "source": "textbook"
+          
+        },
+        {
+          "id": 3,
+          "question": "Find the exact value of tan(60°)",
+          "source": "textbook"
+      
+        },
+        {
+          "id": 4,
+          "question": "Find sin(150°) using related angles",
+          "source": "textbook"
+         
+        },
+        {
+          "id": 5,
+          "question": "Find cos(225°) using related angles",
+          "source": "textbook"
+       
+        },
+        {
+          "id": 6,
+          "question": "Find tan(300°) using related angles",
+          "source": "textbook"
+        
+        },
+        {
+          "id": 7,
+          "question": "If sinθ = 3/5 and θ is acute, find cosθ and tanθ",
+          "source": "textbook"
+       
+        },
+        {
+          "id": 8,
+          "question": "Find the amplitude and period of y = 3sin(2x)",
+          "source": "textbook"
+        
+        },
+        {
+          "id": 9,
+          "question": "Find the amplitude and period of y = 2cos(½x)",
+          "source": "textbook"
+        
+        },
+        {
+          "id": 10,
+          "question": "Find the range of y = 2sinx + 1",
+          "source": "textbook"
+        },
+        {
+          "id": 11,
+          "question": "Sketch y = 2 tan(x) + 1. Show asymptotes and key points for one period.",
+          "source": "past_paper"
+      
+        },
+        {
+          "id": 12,
+          "question": "Express 2 sin θ + √5 cos θ in the form R sin(θ + α), where R > 0 and 0° < α < 90°. State the value of R.",
+          "source": "past_paper"
+          
+        },
+        {
+          "id": 13,
+          "question": "For the expression 2 sin θ + √5 cos θ, which is written in the form R sin(θ + α), state the greatest value it can take as θ varies.",
+          "source": "past_paper"
+          
+        },
+        {
+          "id": 14,
+          "question": "For the expression 2 sin θ + √5 cos θ, which is written in the form R sin(θ + α), state the least value it can take as θ varies.",
+          "source": "past_paper"
+        },
+        {
+          "id": 15,
+          "question": "Express cos(180° + θ) in terms of cosθ",
+          "source": "textbook"
+         
+        }
+      ]
+    },
+    {
+      "category": "Equations",
+      "questions": [
+        {
+          "id": 16,
+          "question": "Solve the equation 2/cos θ = 7 - 3 cos θ for 0° ≤ θ ≤ 360°.",
+          "source": "past_paper"
+          
+        },
+        {
+          "id": 17,
+          "question": "Solve the equation tan²θ - 3 = 0 for 0° ≤ θ ≤ 360°",
+          "source": "past_paper"
+         
+        },
+        {
+          "id": 18,
+          "question": "Show that the equation 3 tan x = -2 cos x can be written in the form 2 sin² x - 3 sin x - 2 = 0. Hence, solve 3 tan x = -2 cos x for 0 ≤ x ≤ 2π.",
+          "source": "past_paper"
+      
+        },
+        {
+          "id": 19,
+          "question": "Given that 2 sin θ + √5 cos θ = 3 sin(θ + 48.19°), solve the equation 2 sin θ + √5 cos θ = 2.4 for 0° < θ < 360°.",
+          "source": "past_paper"
+          
+        },
+        {
+          "id": 20,
+          "question": "Solve the equation (sin θ tan θ)/(1 - cos θ) + 2 = 0 for 0° ≤ θ ≤ 360°.",
+          "source": "past_paper"
+        
+        },
+        {
+          "id": 21,
+          "question": "Solve 2tan²θ = 11secθ - 7 for 0° ≤ θ < 360°",
+          "source": "past_paper"
+       
+        },
+        {
+          "id": 22,
+          "question": "Solve the equation sin 2θ = 1 for 0° ≤ θ ≤ 360°",
+          "source": "textbook"
+        },
+        {
+          "id": 23,
+          "question": "Show that the equation 3 cot x - 2 sin x = 0 can be expressed as 2 cos² x + 3 cos x - 2 = 0. Hence, solve it for 0 ≤ x ≤ 2π.",
+          "source": "past_paper"
+        },
+        {
+          "id": 24,
+          "question": "Solve the equation tan 2θ = -√3 for 0° ≤ θ ≤ 360°",
+          "source": "textbook"
+        },
+        {
+          "id": 25,
+          "question": "Solve 3tanx = cotx for 0° ≤ x < 360°",
+          "source": "textbook"
+        }
+      ]
+    },
+    {
+      "category": "Trigonometric Identities",
+      "questions": [
+        {
+          "id": 26,
+          "question": "Prove that tan²x - sin²x ≡ tan²x sin²x.",
+          "source": "past_paper"
+         
+        },
+        {
+          "id": 27,
+          "question": "Prove that (sinθ tanθ)/(1 - cosθ) ≡ 1 + 1/cosθ",
+          "source": "textbook"
+         
+        },
+        {
+          "id": 28,
+          "question": "Prove the identity (1 - cos β)/sin β = sin β/(1 + cos β).",
+          "source": "textbook"
+          
+        },
+        {
+          "id": 29,
+          "question": "Prove the identity cosec 2x + cot 2x ≡ cot x.",
+          "source": "textbook"
+         
+        },
+        {
+          "id": 30,
+          "question": "Prove the identity (sin θ tan θ)/(1 - cos θ) ≡ 1 + 1/cos θ.",
+          "source": "textbook"
+          
+        },
+        {
+          "id": 31,
+          "question": "Prove the identity (1 - 2cos² β)/(sin β cos β) ≡ tan β - cot β.",
+          "source": "textbook"
+          
+        },
+        {
+          "id": 32,
+          "question": "Prove the identity (1 - tan² β)/(1 + tan² β) ≡ cos² β - sin² β.",
+          "source": "textbook"
+         
+        },
+        {
+          "id": 33,
+          "question": "Prove the identity (1 - cosβ)/sinβ = sinβ/(1 + cosβ)",
+          "source": "textbook"
+        },
+        {
+          "id": 34,
+          "question": "Prove the identity sec² β + tan² β ≡ (1 - sin² β)/cos² β.",
+          "source": "textbook"
+        },
+        {
+          "id": 35,
+          "question": "Prove the identity(1 - 2cos²β)/(sin²β cos²β) = tanβ · cotβ",
+          "source": "textbook"
+        }
+      ]
+    }
+  ]
+}

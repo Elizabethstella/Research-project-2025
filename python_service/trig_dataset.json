@@ -26,7 +26,9 @@
       "question": "Find the exact value of sin(30°)",
       "step_by_step_solution": [
         "Step 1: From standard angles, sin(30°) = 1/2",
-        "Step 2: Therefore sin(30°) = 0.5"
+        "Explanation: This is a standard result from the 30-60-90 triangle where the side opposite 30° is half the hypotenuse.",
+        "Step 2: Therefore sin(30°) = 0.5",
+        "Explanation: The fraction 1/2 is equivalent to the decimal 0.5."
       ],
       "final_answer": "1/2 or 0.5",
       "difficulty": "Basic",
@@ -39,7 +41,9 @@
       "question": "Find the exact value of cos(45°)",
       "step_by_step_solution": [
         "Step 1: From standard angles, cos(45°) = √2/2",
-        "Step 2: Therefore cos(45°) = √2/2 ≈ 0.7071"
+        "Explanation: In an isosceles right triangle, adjacent and hypotenuse sides give cos(45°) = 1/√2 = √2/2.",
+        "Step 2: Therefore cos(45°) = √2/2 ≈ 0.7071",
+        "Explanation: √2/2 is the exact value; 0.7071 is its decimal approximation."
       ],
       "final_answer": "√2/2",
       "difficulty": "Basic",
@@ -52,7 +56,9 @@
       "question": "Find the exact value of tan(60°)",
       "step_by_step_solution": [
         "Step 1: From standard angles, tan(60°) = √3",
-        "Step 2: Therefore tan(60°) = √3 ≈ 1.732"
+        "Explanation: In a 30-60-90 triangle, tan(60°) = opposite/adjacent = √3/1 = √3.",
+        "Step 2: Therefore tan(60°) = √3 ≈ 1.732",
+        "Explanation: √3 is the exact surd form; 1.732 is its decimal approximation."
       ],
       "final_answer": "√3",
       "difficulty": "Basic",
@@ -65,9 +71,13 @@
       "question": "Find sin(150°) using related angles",
       "step_by_step_solution": [
         "Step 1: 150° is in second quadrant",
+        "Explanation: Angles between 90° and 180° lie in the second quadrant.",
         "Step 2: Reference angle = 180° - 150° = 30°",
+        "Explanation: The reference angle is the acute angle between the terminal arm and the x-axis.",
         "Step 3: sin is positive in second quadrant",
-        "Step 4: sin(150°) = sin(30°) = 1/2"
+        "Explanation: Sine function is positive in the first and second quadrants.",
+        "Step 4: sin(150°) = sin(30°) = 1/2",
+        "Explanation: The sine of an angle in second quadrant equals the sine of its reference angle."
       ],
       "final_answer": "1/2",
       "difficulty": "moderate",
@@ -80,13 +90,17 @@
       "question": "Find cos(225°) using related angles",
       "step_by_step_solution": [
         "Step 1: 225° is in third quadrant",
+        "Explanation: Angles between 180° and 270° lie in the third quadrant.",
         "Step 2: Reference angle = 225° - 180° = 45°",
+        "Explanation: The reference angle is found by subtracting 180° from the given angle.",
         "Step 3: cos is negative in third quadrant",
-        "Step 4: cos(225°) = -cos(45°) = -√2/2"
+        "Explanation: Cosine function is negative in the second and third quadrants.",
+        "Step 4: cos(225°) = -cos(45°) = -√2/2",
+        "Explanation: The cosine of an angle in third quadrant equals negative cosine of its reference angle."
       ],
       "final_answer": "-√2/2",
       "difficulty": "Moderate",
-      "source": "AS textbook.pdf - Related angles"
+      "source": "AS textbook - Related angles"
     },
     {
       "id": "F006",
@@ -95,9 +109,13 @@
       "question": "Find tan(300°) using related angles",
       "step_by_step_solution": [
         "Step 1: 300° is in fourth quadrant",
+        "Explanation: Angles between 270° and 360° lie in the fourth quadrant.",
         "Step 2: Reference angle = 360° - 300° = 60°",
+        "Explanation: The reference angle is found by subtracting the angle from 360°.",
         "Step 3: tan is negative in fourth quadrant",
-        "Step 4: tan(300°) = -tan(60°) = -√3"
+        "Explanation: Tangent function is negative in the second and fourth quadrants.",
+        "Step 4: tan(300°) = -tan(60°) = -√3",
+        "Explanation: The tangent of an angle in fourth quadrant equals negative tangent of its reference angle."
       ],
       "final_answer": "-√3",
       "difficulty": "Moderate",
@@ -110,10 +128,15 @@
       "question": "If sinθ = 3/5 and θ is acute, find cosθ and tanθ",
       "step_by_step_solution": [
         "Step 1: Use Pythagorean identity: sin²θ + cos²θ = 1",
+        "Explanation: This fundamental identity relates sine and cosine of the same angle.",
         "Step 2: (3/5)² + cos²θ = 1 ⇒ 9/25 + cos²θ = 1",
+        "Explanation: Substitute the known value of sinθ into the identity.",
         "Step 3: cos²θ = 1 - 9/25 = 16/25",
+        "Explanation: Solve for cos²θ by isolating it on one side of the equation.",
         "Step 4: cosθ = √(16/25) = 4/5 (positive since acute)",
-        "Step 5: tanθ = sinθ/cosθ = (3/5)/(4/5) = 3/4"
+        "Explanation: Take the positive square root since cosine is positive in the first quadrant.",
+        "Step 5: tanθ = sinθ/cosθ = (3/5)/(4/5) = 3/4",
+        "Explanation: Tangent is defined as the ratio of sine to cosine."
       ],
       "final_answer": "cosθ = 4/5, tanθ = 3/4",
       "difficulty": "Moderate",
@@ -126,9 +149,13 @@
       "question": "Find the amplitude and period of y = 3sin(2x)",
       "step_by_step_solution": [
         "Step 1: General form: y = asin(bx)",
+        "Explanation: Identify the parameters in the standard sine function form.",
         "Step 2: Amplitude = |a| = |3| = 3",
+        "Explanation: Amplitude is the absolute value of the coefficient of the sine function.",
         "Step 3: Period = 2π/|b| = 2π/2 = π",
-        "Step 4: Therefore amplitude = 3, period = π"
+        "Explanation: Period is calculated as 2π divided by the coefficient of x.",
+        "Step 4: Therefore amplitude = 3, period = π",
+        "Explanation: State the final values for both amplitude and period."
       ],
       "final_answer": "Amplitude = 3, Period = π",
       "difficulty": "Moderate",
@@ -141,9 +168,13 @@
       "question": "Find the amplitude and period of y = 2cos(½x)",
       "step_by_step_solution": [
         "Step 1: General form: y = acos(bx)",
+        "Explanation: Identify the parameters in the standard cosine function form.",
         "Step 2: Amplitude = |a| = |2| = 2",
+        "Explanation: Amplitude is the absolute value of the coefficient of the cosine function.",
         "Step 3: Period = 2π/|b| = 2π/(½) = 4π",
-        "Step 4: Therefore amplitude = 2, period = 4π"
+        "Explanation: Period is 2π divided by the coefficient of x; dividing by ½ is same as multiplying by 2.",
+        "Step 4: Therefore amplitude = 2, period = 4π",
+        "Explanation: State the final values for both amplitude and period."
       ],
       "final_answer": "Amplitude = 2, Period = 4π",
       "difficulty": "Moderate",
@@ -156,9 +187,13 @@
       "question": "Find the range of y = 2sinx + 1",
       "step_by_step_solution": [
         "Step 1: Basic sine function range: -1 ≤ sinx ≤ 1",
+        "Explanation: The sine function oscillates between -1 and 1.",
         "Step 2: Multiply by 2: -2 ≤ 2sinx ≤ 2",
+        "Explanation: Multiplying the inequality by 2 scales the range.",
         "Step 3: Add 1: -1 ≤ 2sinx + 1 ≤ 3",
-        "Step 4: Therefore range is [-1, 3]"
+        "Explanation: Adding 1 shifts the entire range upward by 1 unit.",
+        "Step 4: Therefore range is [-1, 3]",
+        "Explanation: The final range is from -1 to 3 inclusive."
       ],
       "final_answer": "Range: [-1, 3]",
       "difficulty": "Moderate",
@@ -171,25 +206,34 @@
       "question": "Find the range of y = 3cosx - 2",
       "step_by_step_solution": [
         "Step 1: Basic cosine function range: -1 ≤ cosx ≤ 1",
+        "Explanation: The cosine function oscillates between -1 and 1.",
         "Step 2: Multiply by 3: -3 ≤ 3cosx ≤ 3",
+        "Explanation: Multiplying the inequality by 3 scales the range.",
         "Step 3: Subtract 2: -5 ≤ 3cosx - 2 ≤ 1",
-        "Step 4: Therefore range is [-5, 1]"
+        "Explanation: Subtracting 2 shifts the entire range downward by 2 units.",
+        "Step 4: Therefore range is [-5, 1]",
+        "Explanation: The final range is from -5 to 1 inclusive."
       ],
       "final_answer": "Range: [-5, 1]",
       "difficulty": "Moderate",
       "source": "AS textbook.pdf - Graph transformations"
     },
-    {
+        {
       "id": "F012",
       "topic": "Basic Concepts",
       "syllabus_ref": "6.1 Trigonometric ratios and their identities",
       "question": "If tanθ = 4/3 and θ is acute, find sinθ and cosθ",
       "step_by_step_solution": [
         "Step 1: Draw right triangle with opposite = 4, adjacent = 3",
+        "Explanation: Since tanθ = opposite/adjacent, we can assign these values to the triangle sides.",
         "Step 2: Hypotenuse = √(4² + 3²) = √(16 + 9) = √25 = 5",
+        "Explanation: Use Pythagorean theorem to find the hypotenuse length.",
         "Step 3: sinθ = opposite/hypotenuse = 4/5",
+        "Explanation: Sine is defined as ratio of opposite side to hypotenuse.",
         "Step 4: cosθ = adjacent/hypotenuse = 3/5",
-        "Step 5: Both positive since θ is acute"
+        "Explanation: Cosine is defined as ratio of adjacent side to hypotenuse.",
+        "Step 5: Both positive since θ is acute",
+        "Explanation: All trigonometric ratios are positive in the first quadrant."
       ],
       "final_answer": "sinθ = 4/5, cosθ = 3/5",
       "difficulty": "Moderate",
@@ -202,9 +246,13 @@
       "question": "Express sin(180° - θ) in terms of sinθ",
       "step_by_step_solution": [
         "Step 1: 180° - θ is in second quadrant",
+        "Explanation: When θ is acute, 180° - θ lies between 90° and 180°.",
         "Step 2: Sine is positive in second quadrant",
+        "Explanation: The sine function is positive in the first and second quadrants.",
         "Step 3: Reference angle is θ",
-        "Step 4: Therefore sin(180° - θ) = sinθ"
+        "Explanation: The acute angle between the terminal arm and the x-axis is θ.",
+        "Step 4: Therefore sin(180° - θ) = sinθ",
+        "Explanation: In second quadrant, sine of an angle equals sine of its reference angle."
       ],
       "final_answer": "sin(180° - θ) = sinθ",
       "difficulty": "Basic",
@@ -217,9 +265,13 @@
       "question": "Express cos(180° + θ) in terms of cosθ",
       "step_by_step_solution": [
         "Step 1: 180° + θ is in third quadrant",
+        "Explanation: When θ is acute, 180° + θ lies between 180° and 270°.",
         "Step 2: Cosine is negative in third quadrant",
+        "Explanation: The cosine function is negative in the second and third quadrants.",
         "Step 3: Reference angle is θ",
-        "Step 4: Therefore cos(180° + θ) = -cosθ"
+        "Explanation: The acute angle between the terminal arm and the x-axis is θ.",
+        "Step 4: Therefore cos(180° + θ) = -cosθ",
+        "Explanation: In third quadrant, cosine of an angle equals negative cosine of its reference angle."
       ],
       "final_answer": "cos(180° + θ) = -cosθ",
       "difficulty": "Basic",
@@ -232,9 +284,13 @@
       "question": "Express tan(360° - θ) in terms of tanθ",
       "step_by_step_solution": [
         "Step 1: 360° - θ is in fourth quadrant",
+        "Explanation: When θ is acute, 360° - θ lies between 270° and 360°.",
         "Step 2: Tangent is negative in fourth quadrant",
+        "Explanation: The tangent function is negative in the second and fourth quadrants.",
         "Step 3: Reference angle is θ",
-        "Step 4: Therefore tan(360° - θ) = -tanθ"
+        "Explanation: The acute angle between the terminal arm and the x-axis is θ.",
+        "Step 4: Therefore tan(360° - θ) = -tanθ",
+        "Explanation: In fourth quadrant, tangent of an angle equals negative tangent of its reference angle."
       ],
       "final_answer": "tan(360° - θ) = -tanθ",
       "difficulty": "Basic",
@@ -247,9 +303,13 @@
       "question": "Find the period of y = tan3x",
       "step_by_step_solution": [
         "Step 1: Basic tan function period = 180°",
+        "Explanation: The fundamental period of tangent function is 180° (or π radians).",
         "Step 2: For y = tan(bx), period = 180°/|b|",
+        "Explanation: The period of transformed tangent function is the basic period divided by |b|.",
         "Step 3: Here b = 3, so period = 180°/3 = 60°",
-        "Step 4: Therefore period is 60°"
+        "Explanation: Substitute b = 3 into the period formula.",
+        "Step 4: Therefore period is 60°",
+        "Explanation: The function completes one full cycle every 60°."
       ],
       "final_answer": "Period = 60°",
       "difficulty": "Basic",
@@ -262,8 +322,11 @@
       "question": "Convert 30° to radians",
       "step_by_step_solution": [
         "Step 1: Use conversion: radians = degrees × π/180",
+        "Explanation: This is the standard conversion factor between degrees and radians.",
         "Step 2: 30° × π/180 = π/6",
-        "Step 3: Therefore 30° = π/6 radians"
+        "Explanation: Simplify the fraction 30/180 to 1/6.",
+        "Step 3: Therefore 30° = π/6 radians",
+        "Explanation: The angle 30° is equivalent to π/6 radians."
       ],
       "final_answer": "π/6 radians",
       "difficulty": "Basic",
@@ -276,8 +339,11 @@
       "question": "Convert 2π/3 radians to degrees",
       "step_by_step_solution": [
         "Step 1: Use conversion: degrees = radians × 180/π",
+        "Explanation: This is the standard conversion factor between radians and degrees.",
         "Step 2: (2π/3) × 180/π = 120°",
-        "Step 3: Therefore 2π/3 radians = 120°"
+        "Explanation: The π cancels out, and (2/3) × 180 = 120.",
+        "Step 3: Therefore 2π/3 radians = 120°",
+        "Explanation: The angle 2π/3 radians is equivalent to 120°."
       ],
       "final_answer": "120°",
       "difficulty": "Basic",
@@ -290,9 +356,13 @@
       "question": "Find the arc length of a circle with radius 5cm and central angle 60°",
       "step_by_step_solution": [
         "Step 1: Convert angle to radians: 60° = π/3 radians",
+        "Explanation: Arc length formula requires the angle to be in radians.",
         "Step 2: Arc length formula: s = rθ",
+        "Explanation: The formula for arc length is radius multiplied by angle in radians.",
         "Step 3: s = 5 × π/3 = 5π/3 cm",
-        "Step 4: Therefore arc length = 5π/3 cm ≈ 5.24cm"
+        "Explanation: Substitute r = 5 and θ = π/3 into the formula.",
+        "Step 4: Therefore arc length = 5π/3 cm ≈ 5.24cm",
+        "Explanation: 5π/3 is the exact value; 5.24cm is the decimal approximation."
       ],
       "final_answer": "5π/3 cm or ≈ 5.24cm",
       "difficulty": "Moderate",
@@ -305,24 +375,32 @@
       "question": "Find the area of a sector with radius 8cm and angle 45°",
       "step_by_step_solution": [
         "Step 1: Convert angle to radians: 45° = π/4 radians",
+        "Explanation: Sector area formula requires the angle to be in radians.",
         "Step 2: Sector area formula: A = ½r²θ",
+        "Explanation: The formula for sector area is half the radius squared times angle in radians.",
         "Step 3: A = ½ × 8² × π/4 = ½ × 64 × π/4 = 8π cm²",
-        "Step 4: Therefore area = 8π cm² ≈ 25.13cm²"
+        "Explanation: Substitute r = 8 and θ = π/4, then simplify.",
+        "Step 4: Therefore area = 8π cm² ≈ 25.13cm²",
+        "Explanation: 8π is the exact value; 25.13cm² is the decimal approximation."
       ],
       "final_answer": "8π cm² or ≈ 25.13cm²",
       "difficulty": "Moderate",
       "source": "AS textbook.pdf - Circular measure"
     },
-    {
+        {
       "id": "F021",
       "topic": "Try Now - Textbook",
       "syllabus_ref": "6.2 Graphs of trigonometric functions",
       "question": "The function f is defined by f: x → 4sinx - 1 for ½π ≤ x ≤ ½π. State the range of f.",
       "step_by_step_solution": [
         "Step 1: For x in [-π/2, π/2], sinx ranges from -1 to 1",
+        "Explanation: The sine function reaches its minimum at -π/2 and maximum at π/2.",
         "Step 2: 4sinx ranges from -4 to 4",
+        "Explanation: Multiplying by 4 scales the range accordingly.",
         "Step 3: 4sinx - 1 ranges from -5 to 3",
-        "Step 4: Therefore range is [-5, 3]"
+        "Explanation: Subtracting 1 shifts the entire range downward by 1 unit.",
+        "Step 4: Therefore range is [-5, 3]",
+        "Explanation: The function oscillates between -5 and 3 inclusive."
       ],
       "final_answer": "Range: [-5, 3]",
       "difficulty": "Moderate",
@@ -335,10 +413,15 @@
       "question": "A function f is defined by f: x → 5 - 2sin2x for 0 ≤ x ≤ π. Find the range of f.",
       "step_by_step_solution": [
         "Step 1: For x in [0, π], 2x ranges from 0 to 2π",
+        "Explanation: The argument 2x doubles the input range.",
         "Step 2: sin2x ranges from -1 to 1",
+        "Explanation: Over a full period (0 to 2π), sine takes all values between -1 and 1.",
         "Step 3: -2sin2x ranges from -2 to 2",
+        "Explanation: Multiplying by -2 inverts and scales the range.",
         "Step 4: 5 - 2sin2x ranges from 3 to 7",
-        "Step 5: Therefore range is [3, 7]"
+        "Explanation: Adding 5 shifts the range upward by 5 units.",
+        "Step 5: Therefore range is [3, 7]",
+        "Explanation: The function oscillates between 3 and 7 inclusive."
       ],
       "final_answer": "Range: [3, 7]",
       "difficulty": "Advanced",
@@ -351,9 +434,13 @@
       "question": "Find the exact value of cosec(45°)",
       "step_by_step_solution": [
         "Step 1: cosecθ = 1/sinθ",
+        "Explanation: Cosecant is the reciprocal of the sine function.",
         "Step 2: sin(45°) = √2/2",
+        "Explanation: This is the standard exact value for sine of 45 degrees.",
         "Step 3: cosec(45°) = 1/(√2/2) = 2/√2 = √2",
-        "Step 4: Therefore cosec(45°) = √2"
+        "Explanation: Dividing by a fraction is equivalent to multiplying by its reciprocal.",
+        "Step 4: Therefore cosec(45°) = √2",
+        "Explanation: The final simplified exact value."
       ],
       "final_answer": "√2",
       "difficulty": "Moderate",
@@ -366,9 +453,13 @@
       "question": "Find the exact value of sec(60°)",
       "step_by_step_solution": [
         "Step 1: secθ = 1/cosθ",
+        "Explanation: Secant is the reciprocal of the cosine function.",
         "Step 2: cos(60°) = 1/2",
+        "Explanation: This is the standard exact value for cosine of 60 degrees.",
         "Step 3: sec(60°) = 1/(1/2) = 2",
-        "Step 4: Therefore sec(60°) = 2"
+        "Explanation: Dividing by 1/2 is equivalent to multiplying by 2.",
+        "Step 4: Therefore sec(60°) = 2",
+        "Explanation: The final exact value."
       ],
       "final_answer": "2",
       "difficulty": "Moderate",
@@ -381,9 +472,13 @@
       "question": "Find the exact value of cot(30°)",
       "step_by_step_solution": [
         "Step 1: cotθ = 1/tanθ",
+        "Explanation: Cotangent is the reciprocal of the tangent function.",
         "Step 2: tan(30°) = 1/√3",
+        "Explanation: This is the standard exact value for tangent of 30 degrees.",
         "Step 3: cot(30°) = 1/(1/√3) = √3",
-        "Step 4: Therefore cot(30°) = √3"
+        "Explanation: Dividing by 1/√3 is equivalent to multiplying by √3.",
+        "Step 4: Therefore cot(30°) = √3",
+        "Explanation: The final simplified exact value."
       ],
       "final_answer": "√3",
       "difficulty": "Moderate",
@@ -396,9 +491,13 @@
       "question": "Find the exact value of sin(120°)",
       "step_by_step_solution": [
         "Step 1: 120° is in second quadrant",
+        "Explanation: Angles between 90° and 180° lie in the second quadrant.",
         "Step 2: Reference angle = 180° - 120° = 60°",
+        "Explanation: The acute angle between the terminal arm and the x-axis is 60°.",
         "Step 3: sin is positive in second quadrant",
-        "Step 4: sin(120°) = sin(60°) = √3/2"
+        "Explanation: Sine function is positive in the first and second quadrants.",
+        "Step 4: sin(120°) = sin(60°) = √3/2",
+        "Explanation: The sine of an angle in second quadrant equals the sine of its reference angle."
       ],
       "final_answer": "√3/2",
       "difficulty": "Moderate",
@@ -411,9 +510,13 @@
       "question": "Find the exact value of cos(135°)",
       "step_by_step_solution": [
         "Step 1: 135° is in second quadrant",
+        "Explanation: Angles between 90° and 180° lie in the second quadrant.",
         "Step 2: Reference angle = 180° - 135° = 45°",
+        "Explanation: The acute angle between the terminal arm and the x-axis is 45°.",
         "Step 3: cos is negative in second quadrant",
-        "Step 4: cos(135°) = -cos(45°) = -√2/2"
+        "Explanation: Cosine function is negative in the second and third quadrants.",
+        "Step 4: cos(135°) = -cos(45°) = -√2/2",
+        "Explanation: The cosine of an angle in second quadrant equals negative cosine of its reference angle."
       ],
       "final_answer": "-√2/2",
       "difficulty": "Moderate",
@@ -426,9 +529,13 @@
       "question": "Find the exact value of tan(210°)",
       "step_by_step_solution": [
         "Step 1: 210° is in third quadrant",
+        "Explanation: Angles between 180° and 270° lie in the third quadrant.",
         "Step 2: Reference angle = 210° - 180° = 30°",
+        "Explanation: The acute angle between the terminal arm and the x-axis is 30°.",
         "Step 3: tan is positive in third quadrant",
-        "Step 4: tan(210°) = tan(30°) = 1/√3"
+        "Explanation: Tangent function is positive in the first and third quadrants.",
+        "Step 4: tan(210°) = tan(30°) = 1/√3",
+        "Explanation: The tangent of an angle in third quadrant equals the tangent of its reference angle."
       ],
       "final_answer": "1/√3",
       "difficulty": "Moderate",
@@ -441,9 +548,13 @@
       "question": "Find the amplitude and period of y = 4sin(3x)",
       "step_by_step_solution": [
         "Step 1: General form: y = asin(bx)",
+        "Explanation: Identify the parameters in the standard sine function form.",
         "Step 2: Amplitude = |a| = |4| = 4",
+        "Explanation: Amplitude is the absolute value of the coefficient of sine.",
         "Step 3: Period = 2π/|b| = 2π/3",
-        "Step 4: Therefore amplitude = 4, period = 2π/3"
+        "Explanation: Period is 2π divided by the coefficient of x.",
+        "Step 4: Therefore amplitude = 4, period = 2π/3",
+        "Explanation: State the final values for both properties."
       ],
       "final_answer": "Amplitude = 4, Period = 2π/3",
       "difficulty": "Moderate",
@@ -456,9 +567,13 @@
       "question": "Find the amplitude and period of y = ½cos(4x)",
       "step_by_step_solution": [
         "Step 1: General form: y = acos(bx)",
+        "Explanation: Identify the parameters in the standard cosine function form.",
         "Step 2: Amplitude = |a| = |½| = ½",
+        "Explanation: Amplitude is the absolute value of the coefficient of cosine.",
         "Step 3: Period = 2π/|b| = 2π/4 = π/2",
-        "Step 4: Therefore amplitude = ½, period = π/2"
+        "Explanation: Period is 2π divided by the coefficient of x.",
+        "Step 4: Therefore amplitude = ½, period = π/2",
+        "Explanation: State the final values for both properties."
       ],
       "final_answer": "Amplitude = ½, Period = π/2",
       "difficulty": "Moderate",
@@ -471,10 +586,15 @@
       "question": "If cosθ = -5/13 and θ is in second quadrant, find sinθ and tanθ",
       "step_by_step_solution": [
         "Step 1: Use Pythagorean identity: sin²θ + cos²θ = 1",
+        "Explanation: This fundamental identity relates sine and cosine.",
         "Step 2: sin²θ + (-5/13)² = 1 ⇒ sin²θ + 25/169 = 1",
+        "Explanation: Substitute the known value of cosine into the identity.",
         "Step 3: sin²θ = 1 - 25/169 = 144/169",
+        "Explanation: Solve for sin²θ by isolating it on one side.",
         "Step 4: sinθ = √(144/169) = 12/13 (positive in second quadrant)",
-        "Step 5: tanθ = sinθ/cosθ = (12/13)/(-5/13) = -12/5"
+        "Explanation: Take positive square root since sine is positive in second quadrant.",
+        "Step 5: tanθ = sinθ/cosθ = (12/13)/(-5/13) = -12/5",
+        "Explanation: Tangent is sine divided by cosine, resulting in a negative value in second quadrant."
       ],
       "final_answer": "sinθ = 12/13, tanθ = -12/5",
       "difficulty": "Advanced",
@@ -487,8 +607,11 @@
       "question": "Find the arc length of a circle with radius 10cm and central angle 2π/3 radians",
       "step_by_step_solution": [
         "Step 1: Arc length formula: s = rθ",
+        "Explanation: The formula requires radius and angle in radians.",
         "Step 2: s = 10 × 2π/3 = 20π/3 cm",
-        "Step 3: Therefore arc length = 20π/3 cm ≈ 20.94cm"
+        "Explanation: Substitute the given values into the formula.",
+        "Step 3: Therefore arc length = 20π/3 cm ≈ 20.94cm",
+        "Explanation: 20π/3 is the exact value; 20.94cm is the decimal approximation."
       ],
       "final_answer": "20π/3 cm or ≈ 20.94cm",
       "difficulty": "Moderate",
@@ -501,9 +624,13 @@
       "question": "Find the area of a sector with radius 6cm and angle 120°",
       "step_by_step_solution": [
         "Step 1: Convert angle to radians: 120° = 2π/3 radians",
+        "Explanation: Sector area formula requires the angle to be in radians.",
         "Step 2: Sector area formula: A = ½r²θ",
+        "Explanation: The formula is half the radius squared times the angle in radians.",
         "Step 3: A = ½ × 6² × 2π/3 = ½ × 36 × 2π/3 = 12π cm²",
-        "Step 4: Therefore area = 12π cm² ≈ 37.70cm²"
+        "Explanation: Substitute the values and simplify the calculation.",
+        "Step 4: Therefore area = 12π cm² ≈ 37.70cm²",
+        "Explanation: 12π is the exact value; 37.70cm² is the decimal approximation."
       ],
       "final_answer": "12π cm² or ≈ 37.70cm²",
       "difficulty": "Moderate",
@@ -516,10 +643,15 @@
       "question": "The function f is defined by f: x → 3 - 4cos2x for 0 ≤ x ≤ π. Find the range of f.",
       "step_by_step_solution": [
         "Step 1: For x in [0, π], 2x ranges from 0 to 2π",
+        "Explanation: The argument 2x means the input to cosine covers a full period.",
         "Step 2: cos2x ranges from -1 to 1",
+        "Explanation: The cosine function oscillates between -1 and 1 over its period.",
         "Step 3: -4cos2x ranges from -4 to 4",
+        "Explanation: Multiplying by -4 scales and inverts the range.",
         "Step 4: 3 - 4cos2x ranges from -1 to 7",
-        "Step 5: Therefore range is [-1, 7]"
+        "Explanation: Adding 3 shifts the entire range upward by 3 units.",
+        "Step 5: Therefore range is [-1, 7]",
+        "Explanation: The function takes all values from -1 to 7 inclusive."
       ],
       "final_answer": "Range: [-1, 7]",
       "difficulty": "Advanced",
@@ -532,9 +664,13 @@
       "question": "Find the exact value of cosec(60°)",
       "step_by_step_solution": [
         "Step 1: cosecθ = 1/sinθ",
+        "Explanation: Cosecant is defined as the reciprocal of sine.",
         "Step 2: sin(60°) = √3/2",
+        "Explanation: This is the standard exact value for sine of 60 degrees.",
         "Step 3: cosec(60°) = 1/(√3/2) = 2/√3 = 2√3/3",
-        "Step 4: Therefore cosec(60°) = 2√3/3"
+        "Explanation: Rationalize the denominator to get the simplified exact form.",
+        "Step 4: Therefore cosec(60°) = 2√3/3",
+        "Explanation: The final simplified exact value."
       ],
       "final_answer": "2√3/3",
       "difficulty": "Moderate",
@@ -547,9 +683,13 @@
       "question": "Find the exact value of sec(45°)",
       "step_by_step_solution": [
         "Step 1: secθ = 1/cosθ",
+        "Explanation: Secant is defined as the reciprocal of cosine.",
         "Step 2: cos(45°) = √2/2",
+        "Explanation: This is the standard exact value for cosine of 45 degrees.",
         "Step 3: sec(45°) = 1/(√2/2) = 2/√2 = √2",
-        "Step 4: Therefore sec(45°) = √2"
+        "Explanation: Simplify 2/√2 by multiplying numerator and denominator by √2.",
+        "Step 4: Therefore sec(45°) = √2",
+        "Explanation: The final simplified exact value."
       ],
       "final_answer": "√2",
       "difficulty": "Moderate",
@@ -562,9 +702,13 @@
       "question": "Find the exact value of cot(45°)",
       "step_by_step_solution": [
         "Step 1: cotθ = 1/tanθ",
+        "Explanation: Cotangent is defined as the reciprocal of tangent.",
         "Step 2: tan(45°) = 1",
+        "Explanation: In a 45-45-90 triangle, opposite and adjacent sides are equal.",
         "Step 3: cot(45°) = 1/1 = 1",
-        "Step 4: Therefore cot(45°) = 1"
+        "Explanation: The reciprocal of 1 is 1.",
+        "Step 4: Therefore cot(45°) = 1",
+        "Explanation: The final exact value."
       ],
       "final_answer": "1",
       "difficulty": "Moderate",
@@ -577,9 +721,13 @@
       "question": "Find the period of y = sin(½x)",
       "step_by_step_solution": [
         "Step 1: Basic sine function period = 360°",
+        "Explanation: The fundamental period of sine function is 360°.",
         "Step 2: For y = sin(bx), period = 360°/|b|",
+        "Explanation: The period scales inversely with the coefficient of x.",
         "Step 3: Here b = ½, so period = 360°/(½) = 720°",
-        "Step 4: Therefore period is 720°"
+        "Explanation: Dividing by ½ is equivalent to multiplying by 2.",
+        "Step 4: Therefore period is 720°",
+        "Explanation: The function completes one full cycle every 720°."
       ],
       "final_answer": "Period = 720°",
       "difficulty": "Moderate",
@@ -592,10 +740,15 @@
       "question": "Find the range of y = -2sinx + 3",
       "step_by_step_solution": [
         "Step 1: Basic sine function range: -1 ≤ sinx ≤ 1",
+        "Explanation: Sine oscillates between -1 and 1.",
         "Step 2: Multiply by -2: 2 ≥ -2sinx ≥ -2 (reverse inequality)",
+        "Explanation: Multiplying by negative number reverses inequality signs.",
         "Step 3: So -2 ≤ -2sinx ≤ 2",
+        "Explanation: Rewrite in standard increasing order.",
         "Step 4: Add 3: 1 ≤ -2sinx + 3 ≤ 5",
-        "Step 5: Therefore range is [1, 5]"
+        "Explanation: Adding 3 shifts the range upward.",
+        "Step 5: Therefore range is [1, 5]",
+        "Explanation: The function oscillates between 1 and 5 inclusive."
       ],
       "final_answer": "Range: [1, 5]",
       "difficulty": "Advanced",
@@ -608,74 +761,58 @@
       "question": "Convert 150° to radians",
       "step_by_step_solution": [
         "Step 1: Use conversion: radians = degrees × π/180",
+        "Explanation: This is the standard conversion factor.",
         "Step 2: 150° × π/180 = 5π/6",
-        "Step 3: Therefore 150° = 5π/6 radians"
+        "Explanation: Simplify 150/180 to 5/6.",
+        "Step 3: Therefore 150° = 5π/6 radians",
+        "Explanation: The angle 150° is equivalent to 5π/6 radians."
       ],
       "final_answer": "5π/6 radians",
       "difficulty": "Basic",
       "source": "AS textbook.pdf - Radian measure"
     },
-    {"id": "F041",
+    {
+      "id": "F041",
       "topic": "Try Now - Textbook",
       "syllabus_ref": "6.2 Graphs of trigonometric functions",
       "question": "The function f is defined by f: x → 4sinx - 1 for -π/2 ≤ x ≤ π/2. Find the coordinates where the graph y = f(x) intersects the axes.",
       "step_by_step_solution": [
         "Step 1: For x-axis intercepts, set f(x) = 0: 4sinx - 1 = 0",
+        "Explanation: x-intercepts occur where the function equals zero.",
         "Step 2: 4sinx = 1 ⇒ sinx = 1/4 = 0.25",
+        "Explanation: Solve for sinx by isolating it.",
         "Step 3: x = sin⁻¹(0.25) ≈ 0.2527 rad and π - 0.2527 ≈ 2.8889 rad",
+        "Explanation: Find principal and secondary solutions within one period.",
         "Step 4: For y-axis intercept, set x = 0: f(0) = 4sin(0) - 1 = -1",
-        "Step 5: Coordinates: x-intercepts (0.253, 0), (2.889, 0); y-intercept (0, -1)"
+        "Explanation: y-intercept occurs when x = 0.",
+        "Step 5: Coordinates: x-intercepts (0.253, 0), (2.889, 0); y-intercept (0, -1)",
+        "Explanation: Only (0.253, 0) is in the domain [-π/2, π/2]."
       ],
       "final_answer": "x-intercepts: (0.253, 0), (2.889, 0); y-intercept: (0, -1)",
       "difficulty": "Advanced",
       "source": "AS textbook.pdf - Try Now 5:3 Q1(b)"
     },
     {
-  "id": "F042",
-  "topic": "Try Now - Textbook",
-  "syllabus_ref": "6.2 Graphs of trigonometric functions",
-  "question": "For f: x → 4sinx - 1, sketch the graph of y = f(x) for -π/2 ≤ x ≤ π/2",
-  "plotting_instructions": {
-    "function_type": "sine_transformed",
-    "equation": "y = 4sin(x) - 1",
-    "domain": [-1.5708, 1.5708],
-    "range": [-6, 4],
-    "key_points": [
-      {"x": -1.571, "y": -5, "label": "(-π/2,-5)", "type": "minimum"},
-      {"x": 0, "y": -1, "label": "(0,-1)", "type": "midpoint"},
-      {"x": 1.571, "y": 3, "label": "(π/2,3)", "type": "maximum"}
-    ],
-    "x_intercepts": [
-      {"x": 0.253, "y": 0, "label": "x ≈ 0.253"},
-      {"x": -2.889, "y": 0, "label": "x ≈ -2.889 (outside domain)"}
-    ],
-    "amplitude": 4,
-    "vertical_shift": -1,
-    "x_scale": "radians",
-    "axes_config": {"x_label": "x (radians)", "y_label": "y", "title": "y = 4sin(x) - 1 for -π/2 ≤ x ≤ π/2"}
-  },
-  "sample_coordinates": [
-    [-1.571, -5], [-1.257, -4.414], [-0.942, -3.242], [-0.628, -1.586],
-    [-0.314, 0.242], [0, -1], [0.314, -2.242], [0.628, -2.414],
-    [0.942, -1.586], [1.257, 0.242], [1.571, 3]
-  ],
-  "matplotlib_code": "import matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.linspace(-np.pi/2, np.pi/2, 100)\ny = 4 * np.sin(x) - 1\n\nplt.figure(figsize=(10, 6))\nplt.plot(x, y, 'blue', linewidth=2)\nplt.grid(True, alpha=0.3)\nplt.axhline(y=0, color='black', linewidth=0.5)\nplt.axvline(x=0, color='black', linewidth=0.5)\nplt.axhline(y=-1, color='gray', linestyle='--', alpha=0.7, label='Midline: y = -1')\n# Mark key points\nplt.plot([-np.pi/2], [-5], 'ro', markersize=6, label='Minimum (-π/2,-5)')\nplt.plot([np.pi/2], [3], 'go', markersize=6, label='Maximum (π/2,3)')\nplt.plot([0], [-1], 'bo', markersize=6, label='Midpoint (0,-1)')\n# Mark x-intercept\nx_intercept = np.arcsin(0.25)  # sin(x) = 1/4\nplt.plot([x_intercept], [0], 'mo', markersize=6, label=f'x-intercept (≈{x_intercept:.3f},0)')\nplt.title('y = 4sin(x) - 1 for -π/2 ≤ x ≤ π/2')\nplt.xlabel('x (radians)')\nplt.ylabel('y')\nplt.legend()\nplt.xlim(-np.pi/2, np.pi/2)\nplt.ylim(-6, 4)\n# Add radian labels\nplt.xticks([-np.pi/2, -np.pi/4, 0, np.pi/4, np.pi/2], \n           ['-π/2', '-π/4', '0', 'π/4', 'π/2'])\nplt.show()",
-  "step_by_step_solution": [
-    "Step 1: Identify parameters: amplitude = 4, vertical shift = -1, no period change",
-    "Step 2: Calculate range in domain: at x=-π/2: 4(-1)-1=-5, at x=π/2: 4(1)-1=3",
-    "Step 3: Determine key points: (-π/2, -5), (0, -1), (π/2, 3)",
-    "Step 4: Find x-intercepts: 4sin(x)-1=0 → sin(x)=0.25 → x≈0.253 (in domain)",
-    "Step 5: Shape: Standard sine wave shape within restricted domain [-π/2, π/2]"
-  ],
-  "visual_elements": {
-    "curve_style": {"color": "blue", "linewidth": 2, "linestyle": "-"},
-    "midline_style": {"color": "gray", "linestyle": "--", "alpha": 0.7},
-    "points_style": {"minimum": "red", "maximum": "green", "midpoint": "blue", "intercept": "magenta"}
-  },
-  "final_answer": "Sine wave with amplitude 4, vertically shifted down 1 unit, domain restricted to [-π/2, π/2]. Range in domain: [-5, 3], x-intercept at x ≈ 0.253",
-  "difficulty": "Advanced",
-  "source": "AS textbook.pdf - Try Now 5:3 Q1(c)"
-},
+      "id": "F042",
+      "topic": "Try Now - Textbook",
+      "syllabus_ref": "6.2 Graphs of trigonometric functions",
+      "question": "For f: x → 4sinx - 1, sketch the graph of y = f(x) for -π/2 ≤ x ≤ π/2",
+      "step_by_step_solution": [
+        "Step 1: Identify parameters: amplitude = 4, vertical shift = -1, no period change",
+        "Explanation: Extract key features from the function form.",
+        "Step 2: Calculate range in domain: at x=-π/2: 4(-1)-1=-5, at x=π/2: 4(1)-1=3",
+        "Explanation: Evaluate at endpoints of the restricted domain.",
+        "Step 3: Determine key points: (-π/2, -5), (0, -1), (π/2, 3)",
+        "Explanation: Identify minimum, midpoint, and maximum points.",
+        "Step 4: Find x-intercepts: 4sin(x)-1=0 → sin(x)=0.25 → x≈0.253 (in domain)",
+        "Explanation: Solve for where the graph crosses the x-axis.",
+        "Step 5: Shape: Standard sine wave shape within restricted domain [-π/2, π/2]",
+        "Explanation: The graph shows increasing sine behavior in this interval."
+      ],
+      "final_answer": "Sine wave with amplitude 4, vertically shifted down 1 unit, domain restricted to [-π/2, π/2]. Range in domain: [-5, 3], x-intercept at x ≈ 0.253",
+      "difficulty": "Advanced",
+      "source": "AS textbook.pdf - Try Now 5:3 Q1(c)"
+    },
     {
       "id": "F043",
       "topic": "Try Now - Textbook",
@@ -683,61 +820,43 @@
       "question": "For f: x → 4sinx - 1, find an expression for f⁻¹(x) and state its domain and range.",
       "step_by_step_solution": [
         "Step 1: Let y = 4sinx - 1",
+        "Explanation: Start with the function equation.",
         "Step 2: Solve for x: 4sinx = y + 1 ⇒ sinx = (y + 1)/4",
+        "Explanation: Isolate the sine term.",
         "Step 3: x = sin⁻¹((y + 1)/4)",
+        "Explanation: Apply inverse sine to both sides.",
         "Step 4: f⁻¹(x) = sin⁻¹((x + 1)/4)",
+        "Explanation: Swap x and y to get the inverse function.",
         "Step 5: Domain of f⁻¹: range of f = [-5, 3]",
-        "Step 6: Range of f⁻¹: domain of f = [-π/2, π/2]"
+        "Explanation: Domain of inverse equals range of original function.",
+        "Step 6: Range of f⁻¹: domain of f = [-π/2, π/2]",
+        "Explanation: Range of inverse equals domain of original function."
       ],
       "final_answer": "f⁻¹(x) = sin⁻¹((x + 1)/4), Domain: [-5, 3], Range: [-π/2, π/2]",
       "difficulty": "Advanced",
       "source": "AS textbook.pdf - Try Now 5:3 Q1(d)"
     },
     {
-  "id": "F044",
-  "topic": "Try Now - Textbook",
-  "syllabus_ref": "6.2 Graphs of trigonometric functions",
-  "question": "For f: x → 5 - 2sin2x, sketch the graph of y = f(x) for 0 ≤ x ≤ π",
-  "plotting_instructions": {
-    "function_type": "sine_transformed",
-    "equation": "y = 5 - 2sin(2x)",
-    "domain": [0, 3.14159],
-    "range": [2, 8],
-    "key_points": [
-      {"x": 0, "y": 5, "label": "(0,5)", "type": "midpoint"},
-      {"x": 0.785, "y": 3, "label": "(π/4,3)", "type": "minimum"},
-      {"x": 1.571, "y": 5, "label": "(π/2,5)", "type": "midpoint"},
-      {"x": 2.356, "y": 7, "label": "(3π/4,7)", "type": "maximum"},
-      {"x": 3.142, "y": 5, "label": "(π,5)", "type": "midpoint"}
-    ],
-    "amplitude": 2,
-    "period": 3.14159,
-    "vertical_shift": 5,
-    "reflection": true,
-    "x_scale": "radians",
-    "axes_config": {"x_label": "x (radians)", "y_label": "y", "title": "y = 5 - 2sin(2x)"}
-  },
-  "sample_coordinates": [
-    [0, 5], [0.393, 4.414], [0.785, 3], [1.178, 3.586], [1.571, 5],
-    [1.963, 6.414], [2.356, 7], [2.749, 6.414], [3.142, 5]
-  ],
-  "matplotlib_code": "import matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.linspace(0, np.pi, 100)\ny = 5 - 2 * np.sin(2 * x)\n\nplt.figure(figsize=(10, 6))\nplt.plot(x, y, 'teal', linewidth=2)\nplt.grid(True, alpha=0.3)\nplt.axhline(y=0, color='black', linewidth=0.5)\nplt.axvline(x=0, color='black', linewidth=0.5)\nplt.axhline(y=5, color='gray', linestyle='--', alpha=0.7, label='Midline: y = 5')\n# Mark key points\nplt.plot([np.pi/4], [3], 'ro', markersize=6, label='Minimum (π/4,3)')\nplt.plot([3*np.pi/4], [7], 'go', markersize=6, label='Maximum (3π/4,7)')\nplt.plot([0, np.pi/2, np.pi], [5, 5, 5], 'bo', markersize=6, label='Midpoints')\nplt.title('y = 5 - 2sin(2x)')\nplt.xlabel('x (radians)')\nplt.ylabel('y')\nplt.legend()\nplt.xlim(0, np.pi)\nplt.ylim(2, 8)\n# Add radian labels\nplt.xticks([0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi], \n           ['0', 'π/4', 'π/2', '3π/4', 'π'])\nplt.show()",
-  "step_by_step_solution": [
-    "Step 1: Identify parameters: amplitude = 2, period = π, vertical shift = 5, reflection = true",
-    "Step 2: Calculate range: [5-2, 5+2] = [3, 7]",
-    "Step 3: Determine key points: (0, 5), (π/4, 3), (π/2, 5), (3π/4, 7), (π, 5)",
-    "Step 4: Shape: Reflected sine wave with amplitude 2, shifted up 5 units",
-    "Step 5: Complete one full period in domain [0, π] with correct reflection pattern"
-  ],
-  "visual_elements": {
-    "curve_style": {"color": "teal", "linewidth": 2, "linestyle": "-"},
-    "midline_style": {"color": "gray", "linestyle": "--", "alpha": 0.7},
-    "points_style": {"minimum": "red", "maximum": "green", "midpoints": "blue"}
-  },
-  "final_answer": "Reflected sine wave with amplitude 2, period π, vertically shifted up 5 units. Range: [3, 7]",
-  "difficulty": "Advanced",
-  "source": "AS textbook.pdf - Try Now 5:3 Q2(b)"
-},
+      "id": "F044",
+      "topic": "Try Now - Textbook",
+      "syllabus_ref": "6.2 Graphs of trigonometric functions",
+      "question": "For f: x → 5 - 2sin2x, sketch the graph of y = f(x) for 0 ≤ x ≤ π",
+      "step_by_step_solution": [
+        "Step 1: Identify parameters: amplitude = 2, period = π, vertical shift = 5, reflection = true",
+        "Explanation: Extract key features from the transformed function.",
+        "Step 2: Calculate range: [5-2, 5+2] = [3, 7]",
+        "Explanation: Range is vertical shift ± amplitude.",
+        "Step 3: Determine key points: (0, 5), (π/4, 3), (π/2, 5), (3π/4, 7), (π, 5)",
+        "Explanation: Identify quarter-period points with reflection.",
+        "Step 4: Shape: Reflected sine wave with amplitude 2, shifted up 5 units",
+        "Explanation: Negative coefficient causes reflection about midline.",
+        "Step 5: Complete one full period in domain [0, π] with correct reflection pattern",
+        "Explanation: The period is compressed to π due to the 2x factor."
+      ],
+      "final_answer": "Reflected sine wave with amplitude 2, period π, vertically shifted up 5 units. Range: [3, 7]",
+      "difficulty": "Advanced",
+      "source": "AS textbook.pdf - Try Now 5:3 Q2(b)"
+    },
     {
       "id": "F045",
       "topic": "Try Now - Textbook",
@@ -745,10 +864,15 @@
       "question": "For f: x → 5 - 2sin2x, solve f(x) = 6 for 0 ≤ x ≤ π",
       "step_by_step_solution": [
         "Step 1: 5 - 2sin2x = 6",
+        "Explanation: Set the function equal to 6.",
         "Step 2: -2sin2x = 1 ⇒ sin2x = -1/2",
+        "Explanation: Isolate the sine term.",
         "Step 3: 2x = 7π/6, 11π/6 (in range 0 to 2π)",
+        "Explanation: Find all solutions for 2x in one period.",
         "Step 4: x = 7π/12, 11π/12",
-        "Step 5: Both solutions are in [0, π]"
+        "Explanation: Divide by 2 to solve for x.",
+        "Step 5: Both solutions are in [0, π]",
+        "Explanation: Verify that solutions lie within the given domain."
       ],
       "final_answer": "x = 7π/12, 11π/12",
       "difficulty": "Advanced",
@@ -761,11 +885,17 @@
       "question": "For f: x → 3 - 4cos2x, state the largest value of f(x) and find the range of f",
       "step_by_step_solution": [
         "Step 1: cos2x ranges from -1 to 1",
+        "Explanation: Cosine oscillates between -1 and 1.",
         "Step 2: -4cos2x ranges from -4 to 4",
+        "Explanation: Multiplying by -4 scales and inverts the range.",
         "Step 3: 3 - 4cos2x ranges from -1 to 7",
+        "Explanation: Adding 3 shifts the range upward.",
         "Step 4: Largest value occurs when cos2x = -1",
+        "Explanation: Maximum occurs when -4cos2x is maximum (4).",
         "Step 5: Maximum f(x) = 3 - 4(-1) = 7",
-        "Step 6: Range is [-1, 7]"
+        "Explanation: Substitute cos2x = -1 into the function.",
+        "Step 6: Range is [-1, 7]",
+        "Explanation: The function takes all values from -1 to 7."
       ],
       "final_answer": "Maximum value = 7, Range: [-1, 7]",
       "difficulty": "Advanced",
@@ -778,10 +908,15 @@
       "question": "For f: x → 3 - 4cos2x, solve f(x) = 4 for 0 ≤ x ≤ π",
       "step_by_step_solution": [
         "Step 1: 3 - 4cos2x = 4",
+        "Explanation: Set the function equal to 4.",
         "Step 2: -4cos2x = 1 ⇒ cos2x = -1/4",
+        "Explanation: Isolate the cosine term.",
         "Step 3: 2x = cos⁻¹(-1/4) ≈ 1.8235 rad and 2π - 1.8235 ≈ 4.4597 rad",
+        "Explanation: Find principal and secondary solutions for 2x.",
         "Step 4: x ≈ 0.9118 rad and x ≈ 2.2298 rad",
-        "Step 5: Both solutions are in [0, π]"
+        "Explanation: Divide by 2 to solve for x.",
+        "Step 5: Both solutions are in [0, π]",
+        "Explanation: Verify solutions lie within the domain."
       ],
       "final_answer": "x ≈ 0.912 rad, 2.230 rad",
       "difficulty": "Advanced",
@@ -794,9 +929,13 @@
       "question": "Find the exact value of sin(7π/6)",
       "step_by_step_solution": [
         "Step 1: 7π/6 = 210° (in third quadrant)",
+        "Explanation: Convert to degrees to identify the quadrant.",
         "Step 2: Reference angle = 7π/6 - π = π/6",
+        "Explanation: Find the acute angle to the x-axis.",
         "Step 3: Sine is negative in third quadrant",
-        "Step 4: sin(7π/6) = -sin(π/6) = -1/2"
+        "Explanation: Determine the sign based on the quadrant.",
+        "Step 4: sin(7π/6) = -sin(π/6) = -1/2",
+        "Explanation: Use the reference angle with the correct sign."
       ],
       "final_answer": "-1/2",
       "difficulty": "Moderate",
@@ -809,9 +948,13 @@
       "question": "Find the exact value of cos(5π/4)",
       "step_by_step_solution": [
         "Step 1: 5π/4 = 225° (in third quadrant)",
+        "Explanation: Convert to degrees to identify the quadrant.",
         "Step 2: Reference angle = 5π/4 - π = π/4",
+        "Explanation: Find the acute angle to the x-axis.",
         "Step 3: Cosine is negative in third quadrant",
-        "Step 4: cos(5π/4) = -cos(π/4) = -√2/2"
+        "Explanation: Determine the sign based on the quadrant.",
+        "Step 4: cos(5π/4) = -cos(π/4) = -√2/2",
+        "Explanation: Use the reference angle with the correct sign."
       ],
       "final_answer": "-√2/2",
       "difficulty": "Moderate",
@@ -824,9 +967,13 @@
       "question": "Find the exact value of tan(4π/3)",
       "step_by_step_solution": [
         "Step 1: 4π/3 = 240° (in third quadrant)",
+        "Explanation: Convert to degrees to identify the quadrant.",
         "Step 2: Reference angle = 4π/3 - π = π/3",
+        "Explanation: Find the acute angle to the x-axis.",
         "Step 3: Tangent is positive in third quadrant",
-        "Step 4: tan(4π/3) = tan(π/3) = √3"
+        "Explanation: Determine the sign based on the quadrant.",
+        "Step 4: tan(4π/3) = tan(π/3) = √3",
+        "Explanation: Use the reference angle with the correct sign."
       ],
       "final_answer": "√3",
       "difficulty": "Moderate",
@@ -5449,438 +5596,437 @@
 ],
   "exam_questions": [
   {
-    "id": "E101",
-    "topic": "Compound Angle Equations",
-    "syllabus_ref": "6.4 Compound angle formulae",
-    "question": "Solve sin(x + 60°) = 2cos(x + 30°) for 0° ≤ x ≤ 180°",
-    "step_by_step_solution": [
-      "Step 1: Expand LHS: sinx cos60° + cosx sin60° = (1/2)sinx + (√3/2)cosx",
-      "Step 2: Expand RHS: 2(cosx cos30° - sinx sin30°) = √3cosx - sinx",
-      "Step 3: Set equal: (1/2)sinx + (√3/2)cosx = √3cosx - sinx",
-      "Step 4: Rearrange: (3/2)sinx = (√3/2)cosx",
-      "Step 5: Simplify: 3sinx = √3cosx",
-      "Step 6: Divide: tanx = 1/√3",
-      "Step 7: Solve: x = 30° (acute solution in given range)"
-    ],
-    "final_answer": "x = 30°",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 6b"
-  },
-  {
-    "id": "E102", 
-    "topic": "Trigonometric Identities",
-    "syllabus_ref": "6.2 Trigonometric identities",
-    "question": "Prove that (1 - cos2x)/(1 + cos2x) ≡ tan²x",
-    "step_by_step_solution": [
-      "LHS Approach:",
-      "Step 1: Use double angle: 1 - cos2x = 2sin²x, 1 + cos2x = 2cos²x",
-      "Step 2: Substitute: (2sin²x)/(2cos²x) = sin²x/cos²x = tan²x ≡ RHS",
-      "",
-      "RHS Approach:",
-      "Step 1: Start with RHS: tan²x = sin²x/cos²x",
-      "Step 2: Use identities: sin²x = (1 - cos2x)/2, cos²x = (1 + cos2x)/2",
-      "Step 3: Substitute: [(1 - cos2x)/2] / [(1 + cos2x)/2] = (1 - cos2x)/(1 + cos2x) ≡ LHS"
-    ],
-    "final_answer": "Identity proven",
-    "difficulty": "Basic",
-    "source": "past exam papers and solutions.pdf - Question 5a"
-  },
-  {
-    "id": "E103",
-    "topic": "Quadratic Trigonometric Equations",
-    "syllabus_ref": "6.3 Solving trigonometric equations", 
-    "question": "Solve 2sin²x - 3sinx - 2 = 0 for 0° ≤ x ≤ 360°",
-    "step_by_step_solution": [
-      "Step 1: Let u = sinx: 2u² - 3u - 2 = 0",
-      "Step 2: Solve quadratic: u = [3 ± √(9+16)]/4 = (3 ± 5)/4",
-      "Step 3: u = 2 or u = -1/2",
-      "Step 4: sinx = 2 is invalid (range -1 to 1)",
-      "Step 5: sinx = -1/2 ⇒ x = 210°, 330°",
-      "Step 6: Verify solutions in given range"
-    ],
-    "final_answer": "x = 210°, 330°",
-    "difficulty": "Basic",
-    "source": "past exam papers and solutions.pdf - Question 3a"
-  },
-  {
-    "id": "E104",
-    "topic": "Trigonometric Identities",
-    "syllabus_ref": "6.2 Trigonometric identities",
-    "question": "Prove that cosec²x - cot²x ≡ 1",
-    "step_by_step_solution": [
-      "LHS Approach:",
-      "Step 1: Write in terms of sine and cosine: (1/sin²x) - (cos²x/sin²x)",
-      "Step 2: Combine: (1 - cos²x)/sin²x",
-      "Step 3: Use identity 1 - cos²x = sin²x",
-      "Step 4: Simplify: sin²x/sin²x = 1 ≡ RHS",
-      "",
-      "RHS Approach:", 
-      "Step 1: Start with RHS: 1 = sin²x + cos²x",
-      "Step 2: Divide by sin²x: 1/sin²x = 1 + cot²x",
-      "Step 3: Rearrange: 1/sin²x - cot²x = 1",
-      "Step 4: Substitute: cosec²x - cot²x = 1 ≡ LHS"
-    ],
-    "final_answer": "Identity proven", 
-    "difficulty": "Basic",
-    "source": "Derived from fundamental identities"
-  },
-  {
-    "id": "E105",
-    "topic": "Multiple Angle Equations",
-    "syllabus_ref": "6.3 Solving trigonometric equations",
-    "question": "Solve cos2x + sinx = 0 for 0° ≤ x ≤ 360°",
-    "step_by_step_solution": [
-      "Step 1: Use identity cos2x = 1 - 2sin²x",
-      "Step 2: Substitute: 1 - 2sin²x + sinx = 0", 
-      "Step 3: Rearrange: 2sin²x - sinx - 1 = 0",
-      "Step 4: Factor: (2sinx + 1)(sinx - 1) = 0",
-      "Step 5: Solve: sinx = -1/2 or sinx = 1",
-      "Step 6: sinx = -1/2 ⇒ x = 210°, 330°",
-      "Step 7: sinx = 1 ⇒ x = 90°"
-    ],
-    "final_answer": "x = 90°, 210°, 330°",
-    "difficulty": "Moderate",
-    "source": "Derived from double angle formulae"
-  },
-  {
-    "id": "E106",
-    "topic": "Trigonometric Identities", 
-    "syllabus_ref": "6.2 Trigonometric identities",
-    "question": "Prove that sin³x + cos³x ≡ (sinx + cosx)(1 - sinx cosx)",
-    "step_by_step_solution": [
-      "LHS Approach:",
-      "Step 1: Use sum of cubes: a³ + b³ = (a + b)(a² - ab + b²)",
-      "Step 2: Apply: sin³x + cos³x = (sinx + cosx)(sin²x - sinx cosx + cos²x)",
-      "Step 3: Use identity sin²x + cos²x = 1",
-      "Step 4: Simplify: (sinx + cosx)(1 - sinx cosx) ≡ RHS",
-      "",
-      "RHS Approach:",
-      "Step 1: Expand RHS: (sinx + cosx)(1 - sinx cosx)",
-      "Step 2: Multiply: sinx + cosx - sin²x cosx - sinx cos²x", 
-      "Step 3: Factor: sinx(1 - cos²x) + cosx(1 - sin²x)",
-      "Step 4: Use identities: sinx(sin²x) + cosx(cos²x) = sin³x + cos³x ≡ LHS"
-    ],
-    "final_answer": "Identity proven",
-    "difficulty": "Moderate",
-    "source": "Algebraic manipulation with trigonometric identities"
-  },
-  {
-    "id": "E107",
-    "topic": "Trigonometric Equations",
-    "syllabus_ref": "6.3 Solving trigonometric equations",
-    "question": "Solve 3cotx - 2sinx = 0 for 0 ≤ x ≤ 2π",
-    "step_by_step_solution": [
-      "Step 1: Write cotx = cosx/sinx: 3(cosx/sinx) - 2sinx = 0",
-      "Step 2: Multiply by sinx: 3cosx - 2sin²x = 0", 
-      "Step 3: Use identity sin²x = 1 - cos²x: 3cosx - 2(1 - cos²x) = 0",
-      "Step 4: Expand: 3cosx - 2 + 2cos²x = 0",
-      "Step 5: Rearrange: 2cos²x + 3cosx - 2 = 0",
-      "Step 6: Factor: (2cosx - 1)(cosx + 2) = 0",
-      "Step 7: cosx = 1/2 or cosx = -2",
-      "Step 8: cosx = -2 is invalid",
-      "Step 9: cosx = 1/2 ⇒ x = π/3, 5π/3"
-    ],
-    "final_answer": "x = π/3, 5π/3",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 12b"
-  },
-  {
-    "id": "E108",
-    "topic": "Trigonometric Identities",
-    "syllabus_ref": "6.2 Trigonometric identities", 
-    "question": "Prove that (sinx + cosx)² ≡ 1 + sin2x",
-    "step_by_step_solution": [
-      "LHS Approach:",
-      "Step 1: Expand LHS: sin²x + 2sinx cosx + cos²x",
-      "Step 2: Use identity sin²x + cos²x = 1",
-      "Step 3: Use identity 2sinx cosx = sin2x", 
-      "Step 4: Simplify: 1 + sin2x ≡ RHS",
-      "",
-      "RHS Approach:",
-      "Step 1: Start with RHS: 1 + sin2x",
-      "Step 2: Use identity sin2x = 2sinx cosx",
-      "Step 3: Use identity 1 = sin²x + cos²x",
-      "Step 4: Combine: sin²x + 2sinx cosx + cos²x = (sinx + cosx)² ≡ LHS"
-    ],
-    "final_answer": "Identity proven",
-    "difficulty": "Basic",
-    "source": "Double angle and Pythagorean identities"
-  },
-  {
-  "id": "E109",
-  "topic": "R-formula",
-  "syllabus_ref": "6.3 R-formula",
-  "question": "Express 2sinθ + √5cosθ in the form Rsin(θ + α) where R > 0 and 0° < α < 90°",
-  "step_by_step_solution": [
-    "Step 1: Calculate R",
-    "Explanation: Use formula R = √(a² + b²) where a and b are coefficients",
-    "Step 2: Find α using tanα = b/a",
-    "Explanation: For Rsin(θ + α) form, compare coefficients",
-    "Step 3: Verify quadrant for α",
-    "Explanation: Ensure α is in correct range based on signs",
-    "Step 4: Write final expression",
-    "Explanation: Combine R and α in required form"
+     "id": "E101",
+      "topic": "Compound Angle Equations",
+      "syllabus_ref": "6.4 Compound angle formulae",
+      "question": "Solve sin(x + 60°) = 2cos(x + 30°) for 0° ≤ x ≤ 180°",
+      "step_by_step_solution": [
+        "Step 1: Expand LHS using compound angle formula",
+        "Explanation: sin(A+B) = sinAcosB + cosAsinB. So, sin(x+60°) = sinx cos60° + cosx sin60° = (1/2)sinx + (√3/2)cosx",
+        "Step 2: Expand RHS using compound angle formula",
+        "Explanation: cos(A+B) = cosAcosB - sinAsinB. So, 2cos(x+30°) = 2(cosx cos30° - sinx sin30°) = 2((√3/2)cosx - (1/2)sinx) = √3cosx - sinx",
+        "Step 3: Set the expanded sides equal",
+        "Explanation: Now the equation is: (1/2)sinx + (√3/2)cosx = √3cosx - sinx",
+        "Step 4: Rearrange terms to group sinx and cosx",
+        "Explanation: Add sinx to both sides: (3/2)sinx + (√3/2)cosx = √3cosx. Subtract (√3/2)cosx from both sides: (3/2)sinx = (√3/2)cosx",
+        "Step 5: Simplify the equation",
+        "Explanation: Multiply both sides by 2 to eliminate denominators: 3sinx = √3cosx",
+        "Step 6: Express in terms of tanx",
+        "Explanation: Divide both sides by 3cosx (valid in the given range): tanx = √3/3 = 1/√3",
+        "Step 7: Solve for x",
+        "Explanation: x = arctan(1/√3) = 30°. This is the only solution in the range 0° ≤ x ≤ 180° where tan is positive (Q1) or negative (Q3). In Q3, x=210°, which is outside the range."
+      ],
+      "final_answer": "x = 30°",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 6b"
+    },
+    {
+      "id": "E102",
+      "topic": "Trigonometric Identities",
+      "syllabus_ref": "6.2 Trigonometric identities",
+      "question": "Prove that (1 - cos2x)/(1 + cos2x) ≡ tan²x",
+      "step_by_step_solution": [
+        "Step 1: Apply double-angle identities to the LHS",
+        "Explanation: We know cos2x = 1 - 2sin²x and cos2x = 2cos²x - 1. Therefore, 1 - cos2x = 2sin²x and 1 + cos2x = 2cos²x",
+        "Step 2: Substitute these into the LHS",
+        "Explanation: LHS becomes (2sin²x) / (2cos²x) = sin²x / cos²x",
+        "Step 3: Simplify using the definition of tanx",
+        "Explanation: sin²x / cos²x = (sinx/cosx)² = tan²x, which is identical to the RHS"
+      ],
+      "final_answer": "Identity proven",
+      "difficulty": "Basic",
+      "source": "past exam papers and solutions.pdf - Question 5a"
+    },
+    {
+      "id": "E103",
+      "topic": "Quadratic Trigonometric Equations",
+      "syllabus_ref": "6.3 Solving trigonometric equations",
+      "question": "Solve 2sin²x - 3sinx - 2 = 0 for 0° ≤ x ≤ 360°",
+      "step_by_step_solution": [
+        "Step 1: Let u = sinx",
+        "Explanation: This transforms the trigonometric equation into a standard quadratic equation: 2u² - 3u - 2 = 0",
+        "Step 2: Solve the quadratic equation for u",
+        "Explanation: Using the quadratic formula: u = [3 ± √(9 - 4(2)(-2))] / 4 = [3 ± √(25)] / 4 = [3 ± 5] / 4. So, u = 2 or u = -1/2",
+        "Step 3: Interpret the solutions in terms of sinx",
+        "Explanation: Since u = sinx, we have sinx = 2 and sinx = -1/2",
+        "Step 4: Check for invalid solutions",
+        "Explanation: sinx = 2 has no solution because the sine function only outputs values between -1 and 1",
+        "Step 5: Solve sinx = -1/2",
+        "Explanation: The sine function is negative in the third and fourth quadrants. The reference angle is arcsin(1/2) = 30°. Therefore, x = 180° + 30° = 210° and x = 360° - 30° = 330°",
+        "Step 6: Verify the solutions are within the range",
+        "Explanation: Both 210° and 330° are within 0° ≤ x ≤ 360°"
+      ],
+      "final_answer": "x = 210°, 330°",
+      "difficulty": "Basic",
+      "source": "past exam papers and solutions.pdf - Question 3a"
+    },
+    {
+      "id": "E104",
+      "topic": "Trigonometric Identities",
+      "syllabus_ref": "6.2 Trigonometric identities",
+      "question": "Prove that cosec²x - cot²x ≡ 1",
+      "step_by_step_solution": [
+        "Step 1: Write in terms of sine and cosine",
+        "Explanation: cosec²x = 1/sin²x and cot²x = cos²x/sin²x. So LHS = 1/sin²x - cos²x/sin²x",
+        "Step 2: Combine into a single fraction",
+        "Explanation: LHS = (1 - cos²x)/sin²x",
+        "Step 3: Use Pythagorean identity",
+        "Explanation: 1 - cos²x = sin²x, so LHS = sin²x/sin²x",
+        "Step 4: Simplify",
+        "Explanation: sin²x/sin²x = 1, which equals the RHS"
+      ],
+      "final_answer": "Identity proven",
+      "difficulty": "Basic",
+      "source": "Derived from fundamental identities"
+    },
+    {
+      "id": "E105",
+      "topic": "Multiple Angle Equations",
+      "syllabus_ref": "6.3 Solving trigonometric equations",
+      "question": "Solve cos2x + sinx = 0 for 0° ≤ x ≤ 360°",
+      "step_by_step_solution": [
+        "Step 1: Use identity for cos2x",
+        "Explanation: cos2x = 1 - 2sin²x. Substitute this into the equation: 1 - 2sin²x + sinx = 0",
+        "Step 2: Rearrange to standard quadratic form",
+        "Explanation: Multiply by -1 and rearrange: 2sin²x - sinx - 1 = 0",
+        "Step 3: Factor the quadratic",
+        "Explanation: (2sinx + 1)(sinx - 1) = 0",
+        "Step 4: Solve for sinx",
+        "Explanation: 2sinx + 1 = 0 gives sinx = -1/2, and sinx - 1 = 0 gives sinx = 1",
+        "Step 5: Solve sinx = -1/2",
+        "Explanation: Sine is negative in Q3 and Q4. Reference angle = 30°. So x = 180° + 30° = 210° and x = 360° - 30° = 330°",
+        "Step 6: Solve sinx = 1",
+        "Explanation: sinx = 1 at x = 90°"
+      ],
+      "final_answer": "x = 90°, 210°, 330°",
+      "difficulty": "Moderate",
+      "source": "Derived from double angle formulae"
+    },
+    {
+      "id": "E106",
+      "topic": "Trigonometric Identities",
+      "syllabus_ref": "6.2 Trigonometric identities",
+      "question": "Prove that sin³x + cos³x ≡ (sinx + cosx)(1 - sinx cosx)",
+      "step_by_step_solution": [
+        "Step 1: Use sum of cubes factorization",
+        "Explanation: a³ + b³ = (a + b)(a² - ab + b²). So sin³x + cos³x = (sinx + cosx)(sin²x - sinx cosx + cos²x)",
+        "Step 2: Apply Pythagorean identity",
+        "Explanation: sin²x + cos²x = 1, so the expression becomes (sinx + cosx)(1 - sinx cosx)",
+        "Step 3: Verify equivalence",
+        "Explanation: This matches the RHS exactly, proving the identity"
+      ],
+      "final_answer": "Identity proven",
+      "difficulty": "Moderate",
+      "source": "Algebraic manipulation with trigonometric identities"
+    },
+    {
+      "id": "E107",
+      "topic": "Trigonometric Equations",
+      "syllabus_ref": "6.3 Solving trigonometric equations",
+      "question": "Solve 3cotx - 2sinx = 0 for 0 ≤ x ≤ 2π",
+      "step_by_step_solution": [
+        "Step 1: Write cotx in terms of sinx and cosx",
+        "Explanation: cotx = cosx/sinx. So the equation becomes: 3(cosx/sinx) - 2sinx = 0",
+        "Step 2: Multiply through by sinx",
+        "Explanation: This eliminates the denominator: 3cosx - 2sin²x = 0",
+        "Step 3: Use Pythagorean identity",
+        "Explanation: sin²x = 1 - cos²x. Substitute: 3cosx - 2(1 - cos²x) = 0",
+        "Step 4: Expand and rearrange",
+        "Explanation: 3cosx - 2 + 2cos²x = 0, so 2cos²x + 3cosx - 2 = 0",
+        "Step 5: Factor the quadratic",
+        "Explanation: (2cosx - 1)(cosx + 2) = 0",
+        "Step 6: Solve each factor",
+        "Explanation: 2cosx - 1 = 0 gives cosx = 1/2, and cosx + 2 = 0 gives cosx = -2",
+        "Step 7: Check validity of solutions",
+        "Explanation: cosx = -2 is impossible since cosine range is [-1, 1]",
+        "Step 8: Solve cosx = 1/2",
+        "Explanation: Cosine is positive in Q1 and Q4. Reference angle = π/3. So x = π/3 and x = 2π - π/3 = 5π/3"
+      ],
+      "final_answer": "x = π/3, 5π/3",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 12b"
+    },
+    {
+      "id": "E108",
+      "topic": "Trigonometric Identities",
+      "syllabus_ref": "6.2 Trigonometric identities",
+      "question": "Prove that (sinx + cosx)² ≡ 1 + sin2x",
+      "step_by_step_solution": [
+        "Step 1: Expand the LHS",
+        "Explanation: (sinx + cosx)² = sin²x + 2sinx cosx + cos²x",
+        "Step 2: Apply Pythagorean identity",
+        "Explanation: sin²x + cos²x = 1, so LHS = 1 + 2sinx cosx",
+        "Step 3: Use double angle identity",
+        "Explanation: 2sinx cosx = sin2x, so LHS = 1 + sin2x, which equals the RHS"
+      ],
+      "final_answer": "Identity proven",
+      "difficulty": "Basic",
+      "source": "Double angle and Pythagorean identities"
+    },
+    {
+      "id": "E109",
+      "topic": "R-formula",
+      "syllabus_ref": "6.3 R-formula",
+      "question": "Express 2sinθ + √5cosθ in the form Rsin(θ + α) where R > 0 and 0° < α < 90°",
+      "step_by_step_solution": [
+        "Step 1: Calculate R",
+        "Explanation: Use formula R = √(a² + b²) where a and b are coefficients. R = √(2² + (√5)²) = √(4 + 5) = √9 = 3",
+        "Step 2: Find α using tanα = b/a",
+        "Explanation: For Rsin(θ + α) form, tanα = (coefficient of cosθ)/(coefficient of sinθ) = √5/2. So α = arctan(√5/2) ≈ 48.19°",
+        "Step 3: Verify quadrant for α",
+        "Explanation: Both sine and cosine coefficients are positive, so α is in the first quadrant, satisfying 0° < α < 90°",
+        "Step 4: Write final expression",
+        "Explanation: Combine R and α in required form: 3sin(θ + 48.19°)"
+      ],
+      "final_answer": "3sin(θ + 48.19°)",
+      "difficulty": "Intermediate",
+      "source": "past exam papers and solutions.pdf"
+    },
+    {
+      "id": "E110",
+      "topic": "R-form Equations",
+      "syllabus_ref": "6.4 Compound angle formulae",
+      "question": "Solve 2sinθ + √5cosθ = 2.4 for 0° ≤ θ ≤ 360°",
+      "step_by_step_solution": [
+        "Step 1: Use previous R-form result",
+        "Explanation: From E109, we know 2sinθ + √5cosθ = 3sin(θ + 48.19°)",
+        "Step 2: Substitute into the equation",
+        "Explanation: The equation becomes: 3sin(θ + 48.19°) = 2.4",
+        "Step 3: Isolate the sine term",
+        "Explanation: Divide both sides by 3: sin(θ + 48.19°) = 0.8",
+        "Step 4: Find reference angle",
+        "Explanation: Reference angle = arcsin(0.8) ≈ 53.13°",
+        "Step 5: Solve for (θ + α)",
+        "Explanation: sin is positive in Q1 and Q2. So θ + 48.19° = 53.13° or θ + 48.19° = 180° - 53.13° = 126.87°",
+        "Step 6: Solve for θ from first case",
+        "Explanation: θ = 53.13° - 48.19° = 4.94° ≈ 4.9°",
+        "Step 7: Solve for θ from second case",
+        "Explanation: θ = 126.87° - 48.19° = 78.68° ≈ 78.7°"
+      ],
+      "final_answer": "θ = 4.9°, 78.7°",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 6(b)(i)"
+    },
+    {
+      "id": "E111",
+      "topic": "R-form Properties",
+      "syllabus_ref": "6.4 Compound angle formulae",
+      "question": "State the greatest and least values of 2sinθ + √5cosθ as θ varies",
+      "step_by_step_solution": [
+        "Step 1: Recall the R-form expression",
+        "Explanation: From E109, 2sinθ + √5cosθ = 3sin(θ + 48.19°)",
+        "Step 2: Determine maximum value",
+        "Explanation: Maximum occurs when sin(θ + α) = 1. So maximum value = 3 × 1 = 3",
+        "Step 3: Determine minimum value",
+        "Explanation: Minimum occurs when sin(θ + α) = -1. So minimum value = 3 × (-1) = -3"
+      ],
+      "final_answer": "Greatest value = 3, Least value = -3",
+      "difficulty": "Basic",
+      "source": "past exam papers and solutions.pdf - Question 6(b)(ii)"
+    },
+    {
+      "id": "E112",
+      "topic": "Compound Angle Equations",
+      "syllabus_ref": "6.3 Solving trigonometric equations",
+      "question": "Solve sin(θ + 60°)secθ = 2 for 0° ≤ θ ≤ 360°",
+      "step_by_step_solution": [
+        "Step 1: Expand sin(θ + 60°)",
+        "Explanation: sin(θ + 60°) = sinθcos60° + cosθsin60° = (1/2)sinθ + (√3/2)cosθ",
+        "Step 2: Substitute secθ = 1/cosθ",
+        "Explanation: LHS becomes: [(1/2)sinθ + (√3/2)cosθ] × (1/cosθ) = (1/2)tanθ + √3/2",
+        "Step 3: Set equal to RHS",
+        "Explanation: (1/2)tanθ + √3/2 = 2",
+        "Step 4: Isolate tanθ",
+        "Explanation: Subtract √3/2 from both sides: (1/2)tanθ = 2 - √3/2 = (4 - √3)/2",
+        "Step 5: Solve for tanθ",
+        "Explanation: Multiply both sides by 2: tanθ = 4 - √3",
+        "Step 6: Solve for θ",
+        "Explanation: θ = arctan(4 - √3) ≈ 65.38°. Since tan is positive, second solution in Q3: θ = 180° + 65.38° = 245.38°"
+      ],
+      "final_answer": "θ = 65.38°, 245.38°",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 2"
+    },
+    {
+      "id": "E113",
+      "topic": "Trigonometric Equations",
+      "syllabus_ref": "6.3 Solving trigonometric equations",
+      "question": "Solve 2cos(θ + 30°) + 5sinθ = 4cosθ for 0° ≤ θ ≤ 90°",
+      "step_by_step_solution": [
+        "Step 1: Expand cos(θ + 30°)",
+        "Explanation: cos(θ + 30°) = cosθcos30° - sinθsin30° = (√3/2)cosθ - (1/2)sinθ",
+        "Step 2: Substitute into the equation",
+        "Explanation: 2[(√3/2)cosθ - (1/2)sinθ] + 5sinθ = 4cosθ simplifies to √3cosθ - sinθ + 5sinθ = 4cosθ",
+        "Step 3: Combine like terms",
+        "Explanation: √3cosθ + 4sinθ = 4cosθ",
+        "Step 4: Rearrange to isolate trigonometric functions",
+        "Explanation: 4sinθ = 4cosθ - √3cosθ = cosθ(4 - √3)",
+        "Step 5: Express in terms of tanθ",
+        "Explanation: Divide both sides by 4cosθ: tanθ = (4 - √3)/4",
+        "Step 6: Solve for θ",
+        "Explanation: θ = arctan[(4 - √3)/4] ≈ 38.13°. This is the only solution in 0° ≤ θ ≤ 90°"
+      ],
+      "final_answer": "θ ≈ 38.13°",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 3(a)"
+    },
+    {
+      "id": "E114",
+      "topic": "Inverse Trigonometric Equations",
+      "syllabus_ref": "6.3 Solving trigonometric equations",
+      "question": "Find the possible values of x correct to 2 decimal places for which sin⁻¹(x² - 2) = 2π/3",
+      "step_by_step_solution": [
+        "Step 1: Apply sine to both sides",
+        "Explanation: Taking sine of both sides: x² - 2 = sin(2π/3)",
+        "Step 2: Evaluate sin(2π/3)",
+        "Explanation: sin(2π/3) = √3/2 ≈ 0.8660",
+        "Step 3: Substitute and solve for x²",
+        "Explanation: x² - 2 = √3/2, so x² = 2 + √3/2 = (4 + √3)/2",
+        "Step 4: Take square root",
+        "Explanation: x = ±√[(4 + √3)/2]",
+        "Step 5: Calculate numerical values",
+        "Explanation: x ≈ ±√[(4 + 1.732)/2] = ±√[5.732/2] = ±√2.866 ≈ ±1.69"
+      ],
+      "final_answer": "x ≈ ±1.69",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 9"
+    },
+    {
+      "id": "E115",
+      "topic": "Trigonometric Identities",
+      "syllabus_ref": "6.1 Trigonometric identities",
+      "question": "Prove the identity sinθ·tanθ/(1 - cosθ) ≡ 1 + 1/cosθ",
+      "step_by_step_solution": [
+        "Step 1: Write tanθ in terms of sinθ and cosθ",
+        "Explanation: tanθ = sinθ/cosθ, so LHS becomes: sinθ·(sinθ/cosθ)/(1 - cosθ) = sin²θ/[cosθ(1 - cosθ)]",
+        "Step 2: Use Pythagorean identity",
+        "Explanation: sin²θ = 1 - cos²θ, so LHS = (1 - cos²θ)/[cosθ(1 - cosθ)]",
+        "Step 3: Factor numerator",
+        "Explanation: 1 - cos²θ = (1 - cosθ)(1 + cosθ), so LHS = [(1 - cosθ)(1 + cosθ)]/[cosθ(1 - cosθ)]",
+        "Step 4: Cancel common factor",
+        "Explanation: Cancel (1 - cosθ) from numerator and denominator: LHS = (1 + cosθ)/cosθ",
+        "Step 5: Split into two fractions",
+        "Explanation: (1 + cosθ)/cosθ = 1/cosθ + cosθ/cosθ = 1/cosθ + 1, which equals the RHS"
+      ],
+      "final_answer": "Identity proven",
+      "difficulty": "Advanced",
+      "source": "past exam papers and solutions.pdf"
+    },
+    {
+      "id": "E116",
+      "topic": "Trigonometric Identities",
+      "syllabus_ref": "6.2 Trigonometric identities",
+      "question": "Prove that cosec2x + cot2x ≡ cotx",
+      "step_by_step_solution": [
+        "Step 1: Write in terms of sine and cosine",
+        "Explanation: cosec2x = 1/sin2x, cot2x = cos2x/sin2x. So LHS = 1/sin2x + cos2x/sin2x = (1 + cos2x)/sin2x",
+        "Step 2: Use double angle identities",
+        "Explanation: 1 + cos2x = 2cos²x, sin2x = 2sinxcosx. So LHS = (2cos²x)/(2sinxcosx)",
+        "Step 3: Simplify",
+        "Explanation: Cancel 2 and one cosx: LHS = cosx/sinx = cotx, which equals the RHS"
+      ],
+      "final_answer": "Identity proven",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 7(a)"
+    },
+    {
+      "id": "E117",
+      "topic": "Trigonometric Equations",
+      "syllabus_ref": "6.3 Solving trigonometric equations",
+      "question": "Solve 3cotx - 2sinx = 0 for 0 ≤ x ≤ 2π",
+      "step_by_step_solution": [
+        "Step 1: Write cotx in terms of sinx and cosx",
+        "Explanation: cotx = cosx/sinx. So the equation becomes: 3(cosx/sinx) - 2sinx = 0",
+        "Step 2: Multiply through by sinx",
+        "Explanation: This eliminates the denominator: 3cosx - 2sin²x = 0",
+        "Step 3: Use Pythagorean identity",
+        "Explanation: sin²x = 1 - cos²x. Substitute: 3cosx - 2(1 - cos²x) = 0",
+        "Step 4: Expand and rearrange",
+        "Explanation: 3cosx - 2 + 2cos²x = 0, so 2cos²x + 3cosx - 2 = 0",
+        "Step 5: Factor the quadratic",
+        "Explanation: (2cosx - 1)(cosx + 2) = 0",
+        "Step 6: Solve each factor",
+        "Explanation: 2cosx - 1 = 0 gives cosx = 1/2, and cosx + 2 = 0 gives cosx = -2",
+        "Step 7: Check validity of solutions",
+        "Explanation: cosx = -2 is impossible since cosine range is [-1, 1]",
+        "Step 8: Solve cosx = 1/2",
+        "Explanation: Cosine is positive in Q1 and Q4. Reference angle = π/3. So x = π/3 and x = 2π - π/3 = 5π/3"
+      ],
+      "final_answer": "x = π/3, 5π/3",
+      "difficulty": "Moderate",
+      "source": "past exam papers and solutions.pdf - Question 12(b)"
+    },
+    {
+      "id": "E118",
+      "topic": "Trigonometric Equations",
+      "syllabus_ref": "6.2 Trigonometric equations",
+      "question": "Solve the equation 2/cosθ = 7 - 3cosθ for 0° ≤ θ ≤ 360°",
+      "step_by_step_solution": [
+        "Step 1: Multiply both sides by cosθ",
+        "Explanation: This eliminates the denominator, giving: 2 = 7cosθ - 3cos²θ",
+        "Step 2: Rearrange to quadratic form",
+        "Explanation: Bring all terms to one side: 3cos²θ - 7cosθ + 2 = 0",
+        "Step 3: Substitute x = cosθ",
+        "Explanation: Let x = cosθ, so the equation becomes: 3x² - 7x + 2 = 0",
+        "Step 4: Solve quadratic equation",
+        "Explanation: Factor: (3x - 1)(x - 2) = 0. So x = 1/3 or x = 2",
+        "Step 5: Check validity of solutions",
+        "Explanation: cosθ = 2 is invalid (range is -1 to 1). cosθ = 1/3 is valid",
+        "Step 6: Find angles for cosθ = 1/3",
+        "Explanation: θ = arccos(1/3) ≈ 70.53° (Q1). Cosine is also positive in Q4: θ = 360° - 70.53° = 289.47°"
+      ],
+      "final_answer": "θ = 70.5°, 289.5°",
+      "difficulty": "Advanced",
+      "source": "past exam papers and solutions.pdf"
+    },
+    {
+      "id": "E119",
+      "topic": "Trigonometric Equations",
+      "syllabus_ref": "6.2 Trigonometric equations",
+      "question": "Solve the equation 2/cosθ = 7 - 3cosθ for 0° ≤ θ ≤ 360°",
+      "step_by_step_solution": [
+        "Step 1: Multiply both sides by cosθ",
+        "Explanation: This eliminates the denominator, giving: 2 = 7cosθ - 3cos²θ",
+        "Step 2: Rearrange to quadratic form",
+        "Explanation: Bring all terms to one side: 3cos²θ - 7cosθ + 2 = 0",
+        "Step 3: Substitute x = cosθ",
+        "Explanation: Let x = cosθ, so the equation becomes: 3x² - 7x + 2 = 0",
+        "Step 4: Solve quadratic equation",
+        "Explanation: Factor: (3x - 1)(x - 2) = 0. So x = 1/3 or x = 2",
+        "Step 5: Check validity of solutions",
+        "Explanation: cosθ = 2 is invalid (range is -1 to 1). cosθ = 1/3 is valid",
+        "Step 6: Find angles for cosθ = 1/3",
+        "Explanation: θ = arccos(1/3) ≈ 70.53° (Q1). Cosine is also positive in Q4: θ = 360° - 70.53° = 289.47°"
+      ],
+      "final_answer": "θ = 70.5°, 289.5°",
+      "difficulty": "Advanced",
+      "source": "past exam papers and solutions.pdf"
+    },
+    {
+      "id": "E120",
+      "topic": "Trigonometric Equations",
+      "syllabus_ref": "6.2 Trigonometric equations",
+      "question": "Solve the equation 3tanx = -2cosx for 0 ≤ x ≤ 2π",
+      "step_by_step_solution": [
+        "Step 1: Write tanx in terms of sinx and cosx",
+        "Explanation: Use definition tanx = sinx/cosx. The equation becomes: 3(sinx/cosx) = -2cosx",
+        "Step 2: Multiply through by cosx",
+        "Explanation: This eliminates the denominator: 3sinx = -2cos²x",
+        "Step 3: Use Pythagorean identity",
+        "Explanation: Replace cos²x with 1 - sin²x: 3sinx = -2(1 - sin²x)",
+        "Step 4: Rearrange to quadratic form",
+        "Explanation: Expand: 3sinx = -2 + 2sin²x. Bring all terms to one side: 2sin²x - 3sinx - 2 = 0",
+        "Step 5: Solve quadratic in sinx",
+        "Explanation: Factor: (2sinx + 1)(sinx - 2) = 0. So sinx = -1/2 or sinx = 2",
+        "Step 6: Check validity and find angles",
+        "Explanation: sinx = 2 is invalid. sinx = -1/2 gives x = 7π/6 (Q3) and x = 11π/6 (Q4) in the range 0 ≤ x ≤ 2π"
+      ],
+      "final_answer": "x = 7π/6, 11π/6",
+      "difficulty": "Advanced",
+      "source": "past exam papers and solutions.pdf"
+    }
   ],
-  "final_answer": "3sin(θ + 48.19°)",
-  "difficulty": "Intermediate",
-  "source": "past exam papers and solutions.pdf"
-},
-   {
-    "id": "E110",
-    "topic": "R-form Equations",
-    "syllabus_ref": "6.4 Compound angle formulae",
-    "question": "Solve 2sinθ + √5cosθ = 2.4 for 0° ≤ θ ≤ 360°",
-    "step_by_step_solution": [
-      "Step 1: Use previous result: 2sinθ + √5cosθ = 3sin(θ + 48.19°)",
-      "Step 2: Substitute: 3sin(θ + 48.19°) = 2.4",
-      "Step 3: Divide by 3: sin(θ + 48.19°) = 0.8",
-      "Step 4: Find reference angle: sin⁻¹(0.8) ≈ 53.13°",
-      "Step 5: Solve: θ + 48.19° = 53.13° or θ + 48.19° = 180° - 53.13° = 126.87°",
-      "Step 6: θ = 53.13° - 48.19° = 4.94° ≈ 4.9°",
-      "Step 7: θ = 126.87° - 48.19° = 78.68° ≈ 78.7°"
-    ],
-    "final_answer": "θ = 4.9°, 78.7°",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 6(b)(i)"
-  },
-  {
-    "id": "E111",
-    "topic": "R-form Properties",
-    "syllabus_ref": "6.4 Compound angle formulae",
-    "question": "State the greatest and least values of 2sinθ + √5cosθ as θ varies",
-    "step_by_step_solution": [
-      "Step 1: Expression is in form Rsin(θ + α) with R = 3",
-      "Step 2: Maximum occurs when sin(θ + α) = 1",
-      "Step 3: Maximum value = R × 1 = 3",
-      "Step 4: Minimum occurs when sin(θ + α) = -1", 
-      "Step 5: Minimum value = R × (-1) = -3"
-    ],
-    "final_answer": "Greatest value = 3, Least value = -3",
-    "difficulty": "Basic",
-    "source": "past exam papers and solutions.pdf - Question 6(b)(ii)"
-  },
-  {
-    "id": "E112",
-    "topic": "Compound Angle Equations",
-    "syllabus_ref": "6.3 Solving trigonometric equations",
-    "question": "Solve sin(θ + 60°)secθ = 2 for 0° ≤ θ ≤ 360°",
-    "step_by_step_solution": [
-      "Step 1: Expand sin(θ + 60°): sinθcos60° + cosθsin60° = (1/2)sinθ + (√3/2)cosθ",
-      "Step 2: Use secθ = 1/cosθ: [(1/2)sinθ + (√3/2)cosθ] × (1/cosθ) = 2",
-      "Step 3: Simplify: (1/2)tanθ + √3/2 = 2",
-      "Step 4: Isolate tanθ: (1/2)tanθ = 2 - √3/2",
-      "Step 5: Multiply by 2: tanθ = 4 - √3",
-      "Step 6: Solve: θ = tan⁻¹(4 - √3) ≈ 65.38°",
-      "Step 7: Second solution: θ = 180° + 65.38° = 245.38°"
-    ],
-    "final_answer": "θ = 65.38°, 245.38°",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 2"
-  },
-  {
-    "id": "E113",
-    "topic": "Trigonometric Equations",
-    "syllabus_ref": "6.3 Solving trigonometric equations",
-    "question": "Solve 2cos(θ + 30°) + 5sinθ = 4cosθ for 0° ≤ θ ≤ 90°",
-    "step_by_step_solution": [
-      "Step 1: Expand cos(θ + 30°): cosθcos30° - sinθsin30° = (√3/2)cosθ - (1/2)sinθ",
-      "Step 2: Substitute: 2[(√3/2)cosθ - (1/2)sinθ] + 5sinθ = 4cosθ",
-      "Step 3: Simplify: √3cosθ - sinθ + 5sinθ = 4cosθ",
-      "Step 4: Combine: √3cosθ + 4sinθ = 4cosθ",
-      "Step 5: Rearrange: 4sinθ = 4cosθ - √3cosθ",
-      "Step 6: Factor: 4sinθ = cosθ(4 - √3)",
-      "Step 7: Divide: tanθ = (4 - √3)/4",
-      "Step 8: Solve: θ = tan⁻¹[(4 - √3)/4] ≈ 38.13°"
-    ],
-    "final_answer": "θ ≈ 38.13°",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 3(a)"
-  },
-
-  {
-    "id": "E114",
-    "topic": "Inverse Trigonometric Equations",
-    "syllabus_ref": "6.3 Solving trigonometric equations",
-    "question": "Find the possible values of x correct to 2 decimal places for which sin⁻¹(x² - 2) = 2π/3",
-    "step_by_step_solution": [
-      "Step 1: Apply sine to both sides: x² - 2 = sin(2π/3)",
-      "Step 2: Evaluate sin(2π/3) = √3/2",
-      "Step 3: Substitute: x² - 2 = √3/2",
-      "Step 4: Solve for x²: x² = 2 + √3/2 = (4 + √3)/2",
-      "Step 5: Take square root: x = ±√[(4 + √3)/2]",
-      "Step 6: Calculate: x ≈ ±1.70"
-    ],
-    "final_answer": "x ≈ ±1.70",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 9"
-  },
-{
-  "id": "T008",
-  "topic": "Trigonometric Identities",
-  "syllabus_ref": "6.1 Trigonometric identities",
-  "question": "Prove the identity sinθ·tanθ/(1 - cosθ) ≡ 1 + 1/cosθ",
-  "step_by_step_solution": [
-    "Step 1: LHS - Write tanθ as sinθ/cosθ",
-    "Explanation: Express all terms in sine and cosine",
-    "Step 2: LHS becomes sinθ·(sinθ/cosθ)/(1 - cosθ)",
-    "Explanation: Substitute tanθ definition",
-    "Step 3: LHS simplifies to sin²θ/[cosθ(1 - cosθ)]",
-    "Explanation: Combine terms in numerator",
-    "Step 4: LHS - Use identity sin²θ = 1 - cos²θ",
-    "Explanation: Apply Pythagorean identity",
-    "Step 5: LHS becomes (1 - cos²θ)/[cosθ(1 - cosθ)]",
-    "Explanation: Substitute for sin²θ",
-    "Step 6: LHS - Factor numerator as (1 - cosθ)(1 + cosθ)",
-    "Explanation: Difference of squares factorization",
-    "Step 7: LHS - Cancel (1 - cosθ) from numerator and denominator",
-    "Explanation: Simplify the fraction",
-    "Step 8: LHS becomes (1 + cosθ)/cosθ",
-    "Explanation: Final simplified form",
-    "Step 9: LHS separates to 1/cosθ + cosθ/cosθ",
-    "Explanation: Split into two fractions",
-    "Step 10: LHS equals 1/cosθ + 1",
-    "Explanation: Final form matches RHS"
-     
-  ],
-    "alternative_solution": [
-    "Step 11: RHS - Start with 1 + 1/cosθ",
-    "Explanation: Alternative approach from right side",
-    "Step 12: RHS - Get common denominator cosθ",
-    "Explanation: Write both terms with same denominator",
-    "Step 13: RHS becomes (cosθ + 1)/cosθ",
-    "Explanation: Combine fractions",
-    "Step 14: RHS - Multiply numerator and denominator by (1 - cosθ)",
-    "Explanation: Strategic multiplication",
-    "Step 15: RHS becomes (1 + cosθ)(1 - cosθ)/[cosθ(1 - cosθ)]",
-    "Explanation: Expand the multiplication",
-    "Step 16: RHS - Numerator simplifies to 1 - cos²θ",
-    "Explanation: Difference of squares result",
-    "Step 17: RHS - Replace 1 - cos²θ with sin²θ",
-    "Explanation: Apply Pythagorean identity",
-    "Step 18: RHS becomes sin²θ/[cosθ(1 - cosθ)]",
-    "Explanation: Simplified form",
-    "Step 19: RHS - Write as (sinθ/cosθ)·[sinθ/(1 - cosθ)]",
-    "Explanation: Separate into product",
-    "Step 20: RHS equals tanθ·sinθ/(1 - cosθ)",
-    "Explanation: Final form matches LHS"
-  ],
-  "final_answer": "Identity proven both ways: LHS = RHS and RHS = LHS",
-  "difficulty": "Advanced",
-  "source": "past exam papers and solutions.pdf"
-},
-  {
-    "id": "E116",
-    "topic": "Trigonometric Identities",
-    "syllabus_ref": "6.2 Trigonometric identities",
-    "question": "Prove that cosec2x + cot2x ≡ cotx",
-    "step_by_step_solution": [
-      "LHS Approach:",
-      "Step 1: Write in terms of sine and cosine: 1/sin2x + cos2x/sin2x",
-      "Step 2: Combine: (1 + cos2x)/sin2x",
-      "Step 3: Use identities: 1 + cos2x = 2cos²x, sin2x = 2sinxcosx",
-      "Step 4: Substitute: (2cos²x)/(2sinxcosx) = cosx/sinx = cotx ≡ RHS",
-      "",
-      "RHS Approach:",
-      "Step 1: Start with RHS: cotx = cosx/sinx",
-      "Step 2: Use double angle: = (2cos²x)/(2sinxcosx)",
-      "Step 3: Recognize: = (1 + cos2x)/sin2x",
-      "Step 4: Split: 1/sin2x + cos2x/sin2x = cosec2x + cot2x ≡ LHS"
-    ],
-    "final_answer": "Identity proven",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 7(a)"
-  },
-  {
-    "id": "E117",
-    "topic": "Trigonometric Equations",
-    "syllabus_ref": "6.3 Solving trigonometric equations",
-    "question": "Solve 3cotx - 2sinx = 0 for 0 ≤ x ≤ 2π",
-    "step_by_step_solution": [
-      "Step 1: Write cotx = cosx/sinx: 3(cosx/sinx) - 2sinx = 0",
-      "Step 2: Multiply by sinx: 3cosx - 2sin²x = 0",
-      "Step 3: Use identity sin²x = 1 - cos²x: 3cosx - 2(1 - cos²x) = 0",
-      "Step 4: Expand: 3cosx - 2 + 2cos²x = 0",
-      "Step 5: Rearrange: 2cos²x + 3cosx - 2 = 0",
-      "Step 6: Factor: (2cosx - 1)(cosx + 2) = 0",
-      "Step 7: cosx = 1/2 or cosx = -2",
-      "Step 8: cosx = -2 is invalid",
-      "Step 9: cosx = 1/2 ⇒ x = π/3, 5π/3"
-    ],
-    "final_answer": "x = π/3, 5π/3",
-    "difficulty": "Moderate",
-    "source": "past exam papers and solutions.pdf - Question 12(b)"
-  },
-  {
-  "id": "E118",
-  "topic": "Trigonometric Equations",
-  "syllabus_ref": "6.2 Trigonometric equations",
-  "question": "Solve the equation 2/cosθ = 7 - 3cosθ for 0° ≤ θ ≤ 360°",
-  "step_by_step_solution": [
-    "Step 1: Multiply both sides by cosθ",
-    "Explanation: Eliminate denominator (valid when cosθ ≠ 0)",
-    "Step 2: Rearrange to quadratic form", 
-    "Explanation: Bring all terms to one side",
-    "Step 3: Substitute x = cosθ",
-    "Explanation: Convert to algebraic equation",
-    "Step 4: Solve quadratic equation",
-    "Explanation: Use factorization or quadratic formula",
-    "Step 5: Check validity of solutions",
-    "Explanation: Cosine values must be between -1 and 1",
-    "Step 6: Find angles in range",
-    "Explanation: Use inverse cosine and consider all quadrants"
-  ],
-  "final_answer": "θ = 70.5°, 289.5°",
-  "difficulty": "Advanced",
-  "source": "past exam papers and solutions.pdf"
-},
-{
-  "id": "E119",
-  "topic": "Trigonometric Equations",
-  "syllabus_ref": "6.2 Trigonometric equations",
-  "question": "Solve the equation 2/cosθ = 7 - 3cosθ for 0° ≤ θ ≤ 360°",
-  "step_by_step_solution": [
-    "Step 1: Multiply both sides by cosθ",
-    "Explanation: Eliminate denominator (valid when cosθ ≠ 0)",
-    "Step 2: Rearrange to quadratic form", 
-    "Explanation: Bring all terms to one side",
-    "Step 3: Substitute x = cosθ",
-    "Explanation: Convert to algebraic equation",
-    "Step 4: Solve quadratic equation",
-    "Explanation: Use factorization or quadratic formula",
-    "Step 5: Check validity of solutions",
-    "Explanation: Cosine values must be between -1 and 1",
-    "Step 6: Find angles in range",
-    "Explanation: Use inverse cosine and consider all quadrants"
-  ],
-  "final_answer": "θ = 70.5°, 289.5°",
-  "difficulty": "Advanced",
-  "source": "past exam papers and solutions.pdf"
-},
-{
-  "id": "E120",
-  "topic": "Trigonometric Equations",
-  "syllabus_ref": "6.2 Trigonometric equations",
-  "question": "Solve the equation 3tanx = -2cosx for 0 ≤ x ≤ 2π",
-  "step_by_step_solution": [
-    "Step 1: Write tanx in terms of sinx and cosx",
-    "Explanation: Use definition tanx = sinx/cosx",
-    "Step 2: Multiply through by cosx",
-    "Explanation: Eliminate denominator",
-    "Step 3: Use Pythagorean identity",
-    "Explanation: Replace cos²x with 1 - sin²x",
-    "Step 4: Rearrange to quadratic form",
-    "Explanation: Bring all terms to one side",
-    "Step 5: Solve quadratic in sinx",
-    "Explanation: Factor or use quadratic formula",
-    "Step 6: Check validity and find angles",
-    "Explanation: Sine values must be between -1 and 1"
-  ],
-  "final_answer": "x = 7π/6, 11π/6",
-  "difficulty": "Advanced",
-  "source": "past exam papers and solutions.pdf"
-}
-],
- "Graphs":[
+"Graphs":[
   {
     "id": "GT001",
     "topic": "Basic Sine Graph",

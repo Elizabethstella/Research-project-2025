@@ -17,7 +17,7 @@ function studentDisagreed(msg) {
 
 router.post("/solve", auth, async (req, res) => {
   try {
-    const { question, topic = "Fundamentals" } = req.body;
+    const { question, topic = "Fundamentals", conversation_id } = req.body;
     let q = question;
     
     // Handle student disagreement by fetching last question
@@ -26,21 +26,26 @@ router.post("/solve", auth, async (req, res) => {
       if (last) q = last.question;
     }
 
-    // Call Python service
-    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/solve`, { question: q });
+    // Call Python service with conversation_id
+    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/solve`, { 
+      question: q, 
+      conversation_id 
+    });
     const result = pyRes.data;
     
     // Record analytics
     recordAttempt(req.user.id, topic, result.confidence > 0.7, result.confidence || 0, q);
     
-    // Return simplified response for frontend - ONLY final_answer and solution_steps
+    // Return enhanced response with conversation support
     res.json({
       success: true,
       final_answer: result.final_answer || "No solution available",
       solution_steps: result.solution_steps || [],
       has_graph: result.has_graph || false,
-      graph_image: result.graph_image || null
-      // Removed: confidence, method, source, matched_question, category
+      graph_image: result.graph_image || null,
+      conversation_id: result.conversation_id || conversation_id, // Return conversation ID
+      available_alternative: result.available_alternative || false,
+      has_follow_up: result.has_follow_up || false
     });
     
   } catch (e) {
@@ -54,47 +59,66 @@ router.post("/solve", auth, async (req, res) => {
   }
 });
 
-router.post("/tutor-help", auth, async (req, res) => {
+
+
+
+router.get("/conversations", auth, async (req, res) => {
   try {
-    const { problem, context = "" } = req.body;
-    
-    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/tutor-help`, {
-      problem,
-      context
-    });
-    
-    const result = pyRes.data;
-    
-    // Record tutor help request
-    recordAttempt(req.user.id, "tutor_help", true, 0, problem);
-    
-    res.json({
-      success: true,
-      final_answer: result.final_answer || "I'll help you solve this step by step:",
-      solution_steps: result.solution_steps || [],
-      hints: result.hints || [],
-      has_graph: result.has_graph || false,
-      graph_image: result.graph_image || null
-    });
-    
+    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/conversations`);
+    res.json(pyRes.data);
   } catch (e) {
-    console.error("Tutor help error:", e);
+    console.error("Get conversations error:", e);
     res.status(500).json({ 
       success: false,
-      error: "Failed to get tutor help",
-      final_answer: "Sorry, I couldn't provide help for this problem.",
-      solution_steps: []
+      error: "Failed to get conversations" 
     });
   }
 });
 
-// ------------------- LESSON ROUTES ------------------- //
-
-router.post("/generate-lesson", auth, async (req, res) => {
+router.get("/conversations/:conversationId", auth, async (req, res) => {
   try {
-    const { topic } = req.body;
+    const { conversationId } = req.params;
+    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/conversations/${conversationId}`);
+    res.json(pyRes.data);
+  } catch (e) {
+    console.error("Get conversation error:", e);
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to get conversation" 
+    });
+  }
+});
+
+router.delete("/conversations/:conversationId", auth, async (req, res) => {
+  try {
+    const { conversationId } = req.params;
+    const pyRes = await axios.delete(`${PYTHON_SERVICE_URL}/conversations/${conversationId}`);
+    res.json(pyRes.data);
+  } catch (e) {
+    console.error("Delete conversation error:", e);
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to delete conversation" 
+    });
+  }
+});
+
+// -------------------  LESSON ROUTES ------------------- //
+
+router.post("/generate_lesson", auth, async (req, res) => {
+  try {
+    const { topic, student_id, section_index = 0 } = req.body;
     
-    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/generate_lesson`, { topic });
+    if (!topic) {
+      return res.status(400).json({ error: "Topic is required" });
+    }
+
+    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/generate_lesson`, {
+      topic,
+      student_id: student_id || req.user.id,
+      section_index
+    });
+    
     const result = pyRes.data;
     
     // Record lesson generation
@@ -104,11 +128,69 @@ router.post("/generate-lesson", auth, async (req, res) => {
     
   } catch (e) {
     console.error("Lesson generation error:", e);
-    res.status(500).json({ error: "Failed to generate lesson" });
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to generate lesson",
+      details: e.message 
+    });
+  }
+});
+// NEW: Multi-topic lesson management
+router.post("/lessons/start-topic", auth, async (req, res) => {
+  try {
+    const { topic_id } = req.body;
+    const user_id = req.user.id;
+    
+    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/lessons/start-topic`, {
+      student_id: user_id,
+      topic_id
+    });
+    
+    // Record topic start
+    recordAttempt(user_id, "topic_started", true, 0, `Started topic: ${topic_id}`);
+    
+    res.json(pyRes.data);
+    
+  } catch (e) {
+    console.error("Start topic error:", e);
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to start topic"
+    });
   }
 });
 
-router.get("/lesson-topics", auth, async (req, res) => {
+router.post("/lessons/continue-topic", auth, async (req, res) => {
+  try {
+    const { topic_id, student_id } = req.body; // Use same parameter names as client
+    
+    console.log("Continue topic request:", { student_id, topic_id });
+    
+    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/lessons/continue-topic`, {
+      student_id: student_id || req.user.id, // Fallback to authenticated user
+      topic_id
+    });
+    
+    console.log("Continue topic response:", pyRes.data);
+    
+    res.json(pyRes.data);
+    
+  } catch (e) {
+    console.error("Continue topic error:", e.message);
+    
+    // More detailed error response
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to continue topic",
+      details: e.message,
+      python_service_url: PYTHON_SERVICE_URL
+    });
+  }
+});
+
+
+
+router.get("/lesson_topics", auth, async (req, res) => {
   try {
     const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/lesson_topics`);
     res.json(pyRes.data);
@@ -118,106 +200,15 @@ router.get("/lesson-topics", auth, async (req, res) => {
   }
 });
 
-router.get("/lesson-stats", auth, async (req, res) => {
-  try {
-    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/lesson_stats`);
-    res.json(pyRes.data);
-  } catch (e) {
-    console.error("Lesson stats error:", e);
-    res.status(500).json({ error: "Failed to get lesson stats" });
-  }
-});
 
-// ------------------- QUIZ ROUTES ------------------- //
 
-router.post("/generate-quiz", auth, async (req, res) => {
-  try {
-    const { topic, num_questions = 5 } = req.body;
-    
-    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/generate_quiz`, {
-      topic,
-      num_questions
-    });
-    
-    const result = pyRes.data;
-    
-    // Record quiz generation
-    recordAttempt(req.user.id, "quiz_generation", true, 0, `Quiz: ${topic}`);
-    
-    res.json(result);
-    
-  } catch (e) {
-    console.error("Quiz generation error:", e);
-    res.status(500).json({ error: "Failed to generate quiz" });
-  }
-});
 
-router.post("/quiz-question-answer", auth, async (req, res) => {
-  try {
-    const { quiz_id, question_id } = req.body;
-    
-    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/quiz_question_answer`, {
-      quiz_id,
-      question_id
-    });
-    
-    res.json(pyRes.data);
-    
-  } catch (e) {
-    console.error("Quiz answer error:", e);
-    res.status(500).json({ error: "Failed to get question answer" });
-  }
-});
 
-router.post("/quiz-progress", auth, async (req, res) => {
-  try {
-    const { quiz_id } = req.body;
-    
-    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/quiz_progress`, {
-      quiz_id
-    });
-    
-    res.json(pyRes.data);
-    
-  } catch (e) {
-    console.error("Quiz progress error:", e);
-    res.status(500).json({ error: "Failed to get quiz progress" });
-  }
-});
 
-router.get("/quiz-topics", auth, async (req, res) => {
-  try {
-    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/quiz_topics`);
-    res.json(pyRes.data);
-  } catch (e) {
-    console.error("Quiz topics error:", e);
-    res.status(500).json({ error: "Failed to get quiz topics" });
-  }
-});
-
-router.get("/popular-quiz-topics", auth, async (req, res) => {
-  try {
-    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/popular_quiz_topics`);
-    res.json(pyRes.data);
-  } catch (e) {
-    console.error("Popular quiz topics error:", e);
-    res.status(500).json({ error: "Failed to get popular quiz topics" });
-  }
-});
-
-router.get("/quiz-stats", auth, async (req, res) => {
-  try {
-    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/quiz_stats`);
-    res.json(pyRes.data);
-  } catch (e) {
-    console.error("Quiz stats error:", e);
-    res.status(500).json({ error: "Failed to get quiz stats" });
-  }
-});
 
 // ------------------- GRAPH ROUTES ------------------- //
 
-router.post("/generate-graph", auth, async (req, res) => {
+router.post("/graph", auth, async (req, res) => {
   try {
     const { expression, question } = req.body;
     
@@ -239,40 +230,45 @@ router.post("/generate-graph", auth, async (req, res) => {
   }
 });
 
-// ------------------- OCR ROUTES ------------------- //
-
-router.post("/process-image", auth, async (req, res) => {
+// Missing lesson routes
+router.post("/lessons/section", auth, async (req, res) => {
   try {
-    // Note: File uploads need special handling
-    // This is a simplified version - you might need multer for file handling
+    const { student_id, topic_id, section_index } = req.body;
     
-    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/process-image`, req.body, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/lessons/section`, {
+      student_id,
+      topic_id, 
+      section_index
     });
     
     res.json(pyRes.data);
     
   } catch (e) {
-    console.error("OCR processing error:", e);
-    res.status(500).json({ error: "Failed to process image" });
+    console.error("Lesson section error:", e);
+    res.status(500).json({ error: "Failed to get lesson section" });
   }
 });
 
-// ------------------- USER PROFILE ROUTES ------------------- //
-
-router.get("/user/me", auth, async (req, res) => {
+router.post("/lessons/ask", auth, async (req, res) => {
   try {
-    const user = db.prepare("SELECT id, name, email, role FROM users WHERE id = ?").get(req.user.id);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-    res.json(user);
+    const { topic_id, question, conversation, student_id } = req.body;
+    
+    const pyRes = await axios.post(`${PYTHON_SERVICE_URL}/lessons/ask`, {
+      topic_id,
+      question,
+      conversation,
+      student_id: student_id || req.user.id
+    });
+    
+    res.json(pyRes.data);
+    
   } catch (e) {
-    console.error("User profile error:", e);
-    res.status(500).json({ error: "Failed to get user profile" });
+    console.error("Ask question error:", e);
+    res.status(500).json({ error: "Failed to ask question" });
   }
 });
+
+
+
 
 export default router;

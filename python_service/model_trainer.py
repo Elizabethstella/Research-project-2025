@@ -424,7 +424,7 @@ class TrueAITutor:
         return intent
     
     def _learn_question_categories(self):
-        """AI learns patterns in question types"""
+        """AI learns patterns in question types - FIXED VERSION"""
         print("   🔍 Learning question patterns...")
         
         pattern_counts = {}
