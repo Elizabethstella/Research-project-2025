@@ -135,7 +135,7 @@ router.post("/generate_lesson", auth, async (req, res) => {
     });
   }
 });
-// NEW: Multi-topic lesson management
+
 router.post("/lessons/start-topic", auth, async (req, res) => {
   try {
     const { topic_id } = req.body;
@@ -190,18 +190,26 @@ router.post("/lessons/continue-topic", auth, async (req, res) => {
 
 
 
-router.get("/lesson_topics", auth, async (req, res) => {
+router.get("/lessons/topics", auth, async (req, res) => {
   try {
-    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/lesson_topics`);
+    console.log("🔍 API Glue: Fetching lessons/topics from Python service...");
+    
+    const pyRes = await axios.get(`${PYTHON_SERVICE_URL}/lessons/topics`);
+    
+    console.log("✅ API Glue: Got response from Python service");
+    
     res.json(pyRes.data);
+    
   } catch (e) {
-    console.error("Lesson topics error:", e);
-    res.status(500).json({ error: "Failed to get lesson topics" });
+    console.error("❌ API Glue: Lessons topics error:", e.message);
+    
+    res.status(500).json({ 
+      success: false,
+      error: "Failed to get lesson topics",
+      details: e.message
+    });
   }
 });
-
-
-
 
 
 

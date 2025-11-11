@@ -24,11 +24,14 @@ export const lessonAPI = {
       student_id: studentId, 
       section_index: sectionIndex 
     }),
-  getLessonTopics: () => api.get('/lesson_topics'),
+  
+  // REMOVE THIS DUPLICATE (it has typo):
+  // getLessonTopics: () => api.get('/lesson/topics'),
+  
   getLessonStats: () => api.get('/lesson_stats'),
 
- 
-  getTopics: () => api.get('/lessons/topics'), // CHANGED from getAvailableTopics
+  // KEEP THIS ONE (it's correct):
+  getTopics: () => api.get('/lessons/topics'),
   
   startTopic: (studentId, topicId) => 
     api.post('/lessons/start-topic', { student_id: studentId, topic_id: topicId }),
@@ -36,8 +39,7 @@ export const lessonAPI = {
   continueTopic: (studentId, topicId) => 
     api.post('/lessons/continue-topic', { student_id: studentId, topic_id: topicId }),
   
-  // FIXED: Consistent naming
-  getLessonSection: (studentId, topicId, sectionIndex) => // CHANGED from getSection
+  getLessonSection: (studentId, topicId, sectionIndex) =>
     api.post('/lessons/section', { 
       student_id: studentId, 
       topic_id: topicId, 
@@ -51,8 +53,6 @@ export const lessonAPI = {
       conversation, 
       student_id: studentId 
     }),
-
-  // Pre-test and Post-test endpoints
 };
 
 // Student progress endpoints - FIXED (remove duplicate getProgress)

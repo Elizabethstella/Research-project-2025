@@ -61,4 +61,12 @@ app.listen(PORT, () => {
   console.log(`Python service: ${process.env.PYTHON_SERVICE_URL || "http://localhost:7000"}`);
 });
 
+app.get('/api/debug-topics', (req, res) => {
+  console.log("✅ Debug route hit!");
+  res.json({ 
+    success: true, 
+    message: "Debug route works!",
+    topics: ["test1", "test2"]
+  });
+});
 export default app;

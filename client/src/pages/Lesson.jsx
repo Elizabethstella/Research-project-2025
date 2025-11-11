@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { lessonAPI } from "../services/apiService";
 import { detectTopicFromQuestion, getTopicDisplayName } from "../utils/topicDetector";
+
 export default function Lessons() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const [question, setQuestion] = useState("");
@@ -25,6 +26,61 @@ export default function Lessons() {
       localStorage.setItem(`user_${user.id}_conversation`, JSON.stringify(conversation));
     }
   }, [conversation, user.id]);
+
+  // Function to detect if question is trigonometry-related
+  const isTrigonometryQuestion = (question) => {
+    const trigKeywords = [
+      // Basic trig functions
+      'sin', 'cos', 'tan', 'sine', 'cosine', 'tangent',
+      'csc', 'sec', 'cot', 'cosec', 'secant', 'cotangent',
+      
+      // Inverse trig functions
+      'arcsin', 'arccos', 'arctan', 'asin', 'acos', 'atan',
+      
+      // Trig identities and equations
+      'trigonometry', 'trigonometric', 'identity', 'identities',
+      'equation', 'solve', 'prove', 'verify',
+      
+      // Angles and measurements
+      'angle', 'degree', 'radian', 'π', 'pi',
+      'triangle', 'right triangle', 'hypotenuse', 'opposite', 'adjacent',
+      
+      // Graphs and properties
+      'graph', 'amplitude', 'period', 'frequency', 'phase', 'shift',
+      'wave', 'oscillation', 'periodic',
+      
+      // Applications
+      'sine rule', 'cosine rule', 'law of sines', 'law of cosines',
+      'bearing', 'elevation', 'depression', 'height', 'distance',
+      
+      // Special angles and values
+      'unit circle', 'special angles', 'exact values',
+      '30°', '45°', '60°', '90°', '180°', '360°',
+      
+      // Trigonometric formulas
+      'double angle', 'half angle', 'sum to product', 'product to sum',
+      'addition formula', 'subtraction formula',
+      
+      // Common symbols
+      'θ', 'α', 'β', 'γ', '°'
+    ];
+
+    const questionLower = question.toLowerCase();
+    
+    // Check for trig keywords
+    const hasTrigKeyword = trigKeywords.some(keyword => 
+      questionLower.includes(keyword.toLowerCase())
+    );
+
+    // Check for math symbols and patterns
+    const hasTrigPattern = 
+      /sin|cos|tan|θ|π|°/.test(questionLower) ||
+      /trig|triangle|angle/.test(questionLower) ||
+      /solve.*sin|solve.*cos|solve.*tan/.test(questionLower) ||
+      /graph.*sin|graph.*cos|graph.*tan/.test(questionLower);
+
+    return hasTrigKeyword || hasTrigPattern;
+  };
 
   const parseAIResponse = (response) => {
     const sections = {
@@ -161,6 +217,21 @@ export default function Lessons() {
 
     if (!user?.id) {
       setError("Please log in to ask questions");
+      return;
+    }
+
+    // Check if question is trigonometry-related
+    if (!isTrigonometryQuestion(question)) {
+      setError("I only answer trigonometry-related questions. Please ask about sine, cosine, tangent, angles, triangles, or other trigonometry topics.");
+      
+      // Add error message to conversation
+      const errorMessage = {
+        type: "error",
+        content: "I specialize in trigonometry questions only. Please ask me about trigonometric functions, identities, equations, graphs, or triangle problems.",
+        timestamp: new Date().toISOString()
+      };
+      
+      setConversation(prev => [...prev, errorMessage]);
       return;
     }
 
@@ -431,6 +502,7 @@ export default function Lessons() {
       </div>
     );
   };
+
   return (
     <div className="lessons-page">
       <div className="container mt-4">
@@ -438,9 +510,9 @@ export default function Lessons() {
           <div className="col-lg-10 col-xl-8">
             {/* Header */}
             <div className="text-center mb-4">
-              <h2>Mathematics Q&A Assistant</h2>
+              <h2>NSSCAS AI Tutor</h2>
               <p className="text-muted">
-                Ask any questions about trigonometry and mathematics. I'll remember our conversation!
+                AI tutor may make mistakes!
               </p>
               
               {/* Conversation Stats */}
@@ -500,7 +572,7 @@ export default function Lessons() {
 </div>
                     
                     <div className="form-text">
-                      Ask anything about mathematics, trigonometry, or related concepts.
+                      Ask anything about Trigonometry.
                     </div>
                   </div>
                   
@@ -550,7 +622,7 @@ export default function Lessons() {
                   <div className="text-muted">
                     <i className="fas fa-comments fa-3x mb-3 text-primary"></i>
                     <h5>Start a Conversation</h5>
-                    <p>No questions yet. Ask me anything about mathematics!</p>
+                    <p>No questions yet. Ask me anything about Trigometry!</p>
                     <div className="mt-3">
                       <small className="d-block"><strong>Example questions:</strong></small>
                       <small className="text-muted">
@@ -657,4 +729,3 @@ export default function Lessons() {
     </div>
   );
 }
- 

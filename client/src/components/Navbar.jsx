@@ -52,7 +52,7 @@ export default function Navbar() {
                 className={`nav-link ${location.pathname === "/home" ? "active" : ""}`} 
                 to="/home"
               >
-                 AI Solver
+                 TrigSolver
               </Link>
             </li>
             
@@ -63,7 +63,7 @@ export default function Navbar() {
                 className={`nav-link ${location.pathname === "/generate-lesson" ? "active" : ""}`} 
                 to="/generate-lesson"
               >
-                Lesson Generation
+                Lesson Generator
               </Link>
             </li>
             
