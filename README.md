@@ -1,5 +1,7 @@
 **SineWise - AI-Powered Trigonometry Tutor**
+
 **Overview**
+
 SineWise is a web-based tutoring system that provides personalized trigonometry instruction aligned with the Namibia NSSCAS Mathematics syllabus. It uses AI to deliver step-by-step solutions, generate practice questions, and help students prepare for examinations.
 The system features an interactive chat interface where students can ask questions and receive detailed responses with complete worked solutions. It supports graph visualization, topic detection, and progress tracking.
 
@@ -24,7 +26,9 @@ NSSCAS 8227 Compliance: All content follows the Namibia Ministry of Education sy
 - Multiple Topics: Comprehensive coverage of all trigonometry topics
 
 **Technology Stack**
+
 *Frontend*
+
 - React 18 - Modern UI framework
 
 - Bootstrap 5 - Responsive styling
@@ -33,6 +37,7 @@ NSSCAS 8227 Compliance: All content follows the Namibia Ministry of Education sy
 
 
 *Backend*
+
 - Python Flask - API server
 
 - Groq AI (Llama 3.1 8B) - AI model for intelligent responses
@@ -42,7 +47,9 @@ NSSCAS 8227 Compliance: All content follows the Namibia Ministry of Education sy
 - RESTful API - Clean interface between frontend and backend
 
 Installation
+
 **Prerequisites**
+
 Node.js (v16 or higher)
 
 Python (v3.8 or higher)
